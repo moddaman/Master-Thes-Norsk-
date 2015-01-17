@@ -182,9 +182,9 @@ Menneske-maskin-interaksjon fungerer ved at en person gir maskinen en kommando, 
 \subsection{Organisering}
 
 
-I 1926 kartla Smith\cite{Smith} barns vokabularutvikling fra alderen 1 til 5 år . Resultatene (se tabell \ref{fig:BarnVak}) fra undersøkelsen viste at allerede i en alder av 3 er det vanlig å ha forståelse for 896 ord. Forskningen er 88 år gammel, men viser omfanget av utfordringen barn har i møte med symbolbasert kommunikasjon. Mens et barn med taleevne kun trenger å finne ordet i hukommelsen, må barn som bruker symboler først finne og deretter lokalisere det representative symbolet. 
+I 1926 kartla Smith\cite{Smith} barns vokabularutvikling fra alderen 1 til 5 år . Resultatene (se tabell \ref{fig:BarnVak}) fra undersøkelsen viste at allerede i en alder av 3 er det vanlig å ha forståelse for 896 ord. Forskningen er 88 år gammel, men viser omfanget av utfordringen barn har i møte med symbolbasert kommunikasjon. Mens et barn med taleevne kun trenger å finne ordet i hukommelsen, må barn som bruker symboler først finne det og deretter lokalisere det representative symbolet. 
 
-I Applikasjonen som skal utvikles vil symbolene bli presentert i en i en tabell. Antall symboler som får plass i tabellen begrenses av skjermens fysiske størrelse og at de må være store nok til at brukeren har mulighet til å se  og samhandle med dem. Slik at for hver beskjed må brukeren navigere seg igjennom en tabell for å finne ønsket symbol. Det er derfor essensielt at organiseringen legger til rette for akkurat dette, og ikke vanskeliggjør barnets evne til å lokalisere, velge og bruke konseptene.
+I Applikasjonen som skal utvikles vil symbolene bli presentert i en i en tabell. Antall symboler som får plass i tabellen begrenses av skjermens fysiske størrelse og at de må være store nok til at brukeren har mulighet til å se  og samhandle med dem. En slik tabell fullt med symboler vil herfra bli referert til som en side. For hver setning brukeren vil uttrykke må han navigere seg igjennom flere av disse sidene for å finne symbolene som representerer ordene i setningen. Det er derfor essensielt at organiseringen legger til rette for akkurat dette, og ikke vanskeliggjør barnets evne til å lokalisere, velge og bruke konseptene.
 
 \begin{table}[h]
 \begin{tabular}{llllllllll}
@@ -205,9 +205,9 @@ Drager og Light \cite{aac} viser til at det inntil nylig var gjort lite forsknin
 \subsection{Navigasjon}
 \label{subsec:navigasjon}
 
-Ettersom et barns vokabular kan bli stort må nødvendigsvis symbolene som representerer ordene deles opp over flere sider. Konsekvensen er at brukeren må ha mulighet til å navigere mellom disse sidene for å finne ønsket symbol. Siden antallet symboler det er plass til på hver side begrenses av skjermstørrelsen og brukerens syn, er spørsmålet hvor mange symboler bør plasseres på hver side med tanke på effektivitet. Drager og light med kollega-er undersøkte nettopp dette på. Resultatene indikerte at barn i alderen 2-5 hadde større vanskeligheter for å lokalisere korrekt side fra en meny med 4 symboler enn en så lokalisere målobjektet når på korrekt side ut av et valg på 12 til 30 symboler, til tross for at sannsynligheten for å finne korrekt side er 25 prosent er mye større enn å finne korrekt symbol 0.03 - 0.08 når en først er på rett side.
+Hvis en tar med alle typene frukt så vil det ikke være plass til alle symbolene på en side, dette gjør at de må deles opp over flere sider.Konsekvensen er at brukeren må ha mulighet til å navigere mellom disse sidene for å finne ønsket symbol. Siden antallet symboler det er plass til på hver side begrenses av skjermstørrelsen og brukerens syn, er spørsmålet hvor mange symboler bør plasseres på hver side med tanke på effektivitet. Drager og light med kollegaer undersøkte nettopp dette. Resultatene indikerte at barn i alderen 2-5 hadde større vanskeligheter for å lokalisere korrekt side fra en meny med 4 symboler enn en så lokalisere målobjektet når på korrekt side ut av et valg på 12 til 30 symboler, til tross for at sannsynligheten for å finne korrekt side er 25 prosent er mye større enn å finne korrekt symbol 0.03 - 0.08 når en først er på rett side.
 
-For barn kan det å navigere være ekstra vanskelig. Dette kommer av flere grunner: (a) de må ha en konseptuellmodell av de gjemte sidene i systemet i minnet; og (b) de må forstå forholdet mellom representasjon brukt på menysiden og de gjemte sidene i vokabularet. Er det symbolet som har bilde av et kjøkken eller av en butikk som leder til symbolet eple? I denne rapporten vil disse utfordringene bli undersøkt.
+For barn kan det å navigere være ekstra vanskelig. Dette kommer av flere grunner: (a) de må ha en konseptuell modell av de gjemte sidene i systemet i minnet. Med andre ord forstå hvordan de mest effektivt kan komme seg fra forsiden til ønsket symbol. (b) De må forstå forholdet mellom representasjon brukt på menysiden og de gjemte sidene i vokabularet. Er det symbolet som har bilde av et kjøkken eller av en butikk som leder til symbolet eple? I denne rapporten vil disse utfordringene bli undersøkt.
 
 
 
@@ -223,7 +223,7 @@ For barn kan det å navigere være ekstra vanskelig. Dette kommer av flere grunn
 
 \subsection{Synsfelt}
 
-I en artikkel skrevet av Tobii \cite{Calibration} sammenlignes øyet med et fotoapparat på grunn av ens mange likhetstrekk. Lys reflekteres fra et objekt - lyset reiser så gjennom en linse å ender opp i øyet. Linsen prosjekterer lyset den mottar på en lyssensitiv overflate. Denne overflatens oppførsel er også det som skiller øyet fra fotoapparatet. For imotsetning til et kamera er ikke overflaten like sensitiv overalt hos øyet. Noe som gjør at menneske kan tilpasse synet etter hvor mye lys som er tilgjengelig. Nedsiden er at det også resulterer i at menneske kun kan se klart i begrensede områder av synsfeltet. Figur \ref{fig:visueltArea} illustrerer hvordan synsfeltet hos menneske er delt inn etter klarhet. (F) representerer det foveale området. Dette er området man fokuserer på og oppfatter klarest. Det er hovedsaklig fra dette området visuell data hentes fra . (Pf) viser det parafovela omårdet, å kjennetegnes ved at uskarpheten øker til man kommer til det perifere området. (P) Det perifere området, også kjent som sidesynet, fungerer kun bra til å fange opp bevegelser og kontraster.
+I en artikkel skrevet av Tobii \cite{Calibration} sammenlignes øyet med et fotoapparat på grunn av dens mange likhetstrekk. Når lys treffer et objekt reflekteres dette, det reflekterte lyset reiser så gjennom en linse og ender opp i øyet. Linsen prosjekterer lyset den mottar på en lyssensitiv overflate. Denne overflatens oppførsel er også det som skiller øyet fra fotoapparatet. For i motsetning til et kamera er ikke overflaten like sensitiv overalt i øyet.  Dette gjør at menneske kan tilpasse synet etter hvor mye lys som er tilgjengelig. En bieffekt er at det også resulterer i at menneske kun kan se klart i begrensede områder av synsfeltet. Figur \ref{fig:visueltArea} illustrerer hvordan synsfeltet hos menneske er delt inn etter klarhet. (F) representerer det foveale området. Dette er området man fokuserer på og oppfatter klarest. Det er hovedsaklig fra dette området visuell data hentes fra . (Pf) viser det parafovela omårdet, som kjennetegnes ved at uskarpheten øker til man kommer til det perifere området. (P) Det perifere området, også kjent som sidesynet, fungerer kun bra til å fange opp bevegelser og kontraster.
 
 \begin{figure}[ht!]
 \centering
@@ -240,12 +240,12 @@ Det foveale området er som nevnt det området det registreres mest visuell data
 \section{Hvordan fungerer øyesporing?}
 
 Øyesporing er som tidligere nevnt teknikken brukt til å fange og måle øyebevegelser.
-Det finnes derimot flere fremgangsmåter. I denne oppgaven vil det brukes en ikke-forstyrrende øyestyringsenhet. Som vil si at en bruker i prinsippet ikke vil legge merke til enheten. For denne typen øyesporing er det mest vanlig å bruke en teknikk som heter Pupil Centre Cornea Reflection (\gls{PCCR}) \cite{Calibration}. Teknikken fungerer ved at en lyskilde belyser øyet, dette gir en klare og synlige refleksjoner. Et kamera tar deretter bilde av refleksjonene fra øyet. Bildet blir så brukt til å identifisere lysets refleksjon på hornhinnen og pupillen. Når en vet vinkelen mellom hornhinnen og pupillen er det mulig å regne ut en vektor. Vektoren sammen med andre geometriske egenskaper ved refleksjonene gjør det mulig å kalkulere ut blikkretningen(Der brukeren ser) \cite{Calibration}.
+Det finnes derimot flere fremgangsmåter. I denne oppgaven vil det brukes en ikke-forstyrrende øyestyringsenhet. Dette gjør at brukeren i prinsippet ikke skal legge merke til enheten. For denne typen øyesporing er det mest vanlig å bruke en teknikk som heter Pupil Centre Cornea Reflection (\gls{PCCR}) \cite{Calibration}. Teknikken fungerer ved at en lyskilde belyser øyet for at refleksjonene skal bli klare og synlige. Et kamera tar deretter bilde av refleksjonene fra øyet. Bildet blir så brukt til å identifisere lysets refleksjon på hornhinnen og pupillen. Når en vet vinkelen mellom hornhinnen og pupillen er det mulig å regne ut en vektor. Vektoren sammen med andre geometriske egenskaper ved refleksjonene gjør det mulig å kalkulere ut blikkretningen(Der brukeren ser) \cite{Calibration}.
 
 
 \subsection{Utfordringer}
 
-En utfordring ved øyesporing er blunking. Blunking er et er en kortvarig sammentrekning av øyelokket, noe som gjør at øyet ikke vil gi refleksjon som kamera kan fange, og derfor ikke ha koordinater på hvor brukeren ser. Dette løses under analysen. Ved at man vet koordinatene og fart før øyelokkene trakk seg sammen kan man ekstrapolere seg fram til en tilnærmet korrekt fiksering. 
+En utfordring ved øyesporing er blunking. Blunking er et er en kortvarig sammentrekning av øyelokket, noe som gjør at øyet ikke vil gi refleksjon som kamera kan fange, og derfor ikke ha koordinater på hvor brukeren ser. Dette løses under analysen. Ved at og bruke koordinatene og øyets hurtighet før øyelokkene trakk seg sammen kan man ekstrapolere seg fram til en tilnærmet korrekt fiksering. 
 
 \section{Tobii PCEye Go}
 
@@ -333,7 +333,9 @@ I dette kapittelet vil den eksisterende løsningen sono flex bli diskutert. Det 
 \label{chap:Tobii-Sono-Flex}
 
 
-Programvaren som det tas utgangspunkt i heter Tobii Sono Flex,  og er et systematisert symbolforråd og et verktøy for alternativ og supplerende symbolspråk.  Der bilder gjøres om til tydelig tale og tilbyr et språk til personer som ikke enda kan lese og skrive (kilde tobii). Systemet er spesielt utviklet for barn og unge med med sammensatte kommunikasjonsvansker, som trenger et ordforråd for å videreutvikle språk- og kommunikasjonsferdigheter. Sono flex kan ses på som en nybegynnerpakke med en lav læringskurve. Som skal gjøre brukeren klar for mer avanserte systemer. 
+Programvaren som det tas utgangspunkt i heter Tobii Sono Flex,  og er et systematisert symbolforråd og et verktøy for alternativ og supplerende symbolspråk. Sono Flex har som mål å tilby et språk til personer som ikke enda kan lese og skrive. 
+
+Applikasjonen fungerer som et tastatur, men istedenfor bokstaver er knappene ord med en visuell representasjon av ordet. Brukeren trykker på knappene som utgjør setningen han vil uttrykke, så vil programvaren gjøre om setningen til tydelig tale.  Systemet er spesielt utviklet for barn og unge med med sammensatte kommunikasjonsvansker, som trenger et ordforråd for å videreutvikle språk- og kommunikasjonsferdigheter. Sono flex kan ses på som en nybegynnerpakke med en lav læringskurve som skal gjøre brukeren klar for mer avanserte systemer. 
 
 
 \subsection{Brukergrensesnitt}
