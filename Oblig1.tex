@@ -393,9 +393,9 @@ Som nevnt i seksjon \ref{subsec:navigasjon} så vil et barns vokabular være så
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=140mm]{Symbgrid}
-\caption{Skjermdump hierakiet til Sono Flex}
-\label{fig:hieraki-ting}
+\includegraphics[width=140mm]{netframework4.5}
+\caption{Diagram som viser arkitekturen til .net rammeverket versjon 4.5}
+\label{fig:net-arkitektur}
 \end{figure}
 
 
@@ -408,13 +408,22 @@ I dette kapittelet vil utviklingsfasen bli beskrevet.
 
 \section{Utgangspunkt}
 
-Denne avhandlingen handler om å forbedre programvaren Tobii Sono Flex som ble forklart i kapittel \ref{chap:Tobii-Sono-Flex}. 
-Det mest naturlige ville vært å utvidet eksisterende kode med nye funksjonalitet,  men begrensninger på gjeldene eksisterende gjorde dette vanskelig. Utviklingen ble derfor startet med blanke ark. 
+Rapporten har som mål å undersøke potensielle forbedringer noen utvalgte funksjoner (beskrevet i kap) kan ha på den eksisterende løsningen Tobii Sono Flex (\ref{chap:Tobii-Sono-Flex}). Det mest naturlige valget med henhold til utvikling, ville vært å ta utgangspunkt i eksisterende kildekode og utvidet med nødvendig kode. Problemet var at plattformen som den eksisterende koden var bygget på begynte å bli utdatert og ville gjort det vanskelig å fått implementert mye av funksjonalitet som skulle undersøkes. Hovedsaklig animasjonene. Resultatet var at utviklingen ble startet med et nytt prosjekt. Slik at første del av utviklingen var å lage en simplifisert prototype av den samme applikasjonen bare på en en annen plattform.
+
+\section{Plattform}
+
+Valget av plattform baserte seg på at det måtte være tilrettelagt for implementering av ønsket funksjonalitet, altså god støtte for brukergrensesnitt teknologi som animasjon, lyd og bildebruk. En annen viktig faktor var at rammeverket måtte være kompatibelt med øyestyringsenheten. Plattformen som best oppfulgte disse kravene var .net rammeverket til microsoft.  Rammeverket er omfattende og kan skilte med opptil flere programmeringspråk og komponenter. Rapporten vil derimot kun gi informasjon om de ulike komponentene fra .net som ble brukt og er nødvendig for videre lesning.
 
 
-\section{Teknologier}
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=140mm]{Symbgrid}
+\caption{Skjermdump hierakiet til Sono Flex}
+\label{fig:hieraki-ting}
+\end{figure}
 
-Øyesporingsenheten beskrevet i kapittel  krever at systemet kjører på operativ systemet Windows og APIet som det leveres enheten leveres med,  fungerer kun i programmeringspråkene C\# og C++. Med dette som utgangspunkt ble resten av teknologivalgene er basert på anbefalinger fra dokumentasjonen og tidligere erfaring. 
+
+
 
 \begin{description}
   \item[IDE] Visual Studio
@@ -425,6 +434,16 @@ Det mest naturlige ville vært å utvidet eksisterende kode med nye funksjonalit
 \end{description}
   \item[Versjonskontroll] Git (BitBucket)
 \end{description}
+
+
+
+
+
+\section{Teknologier}
+
+Øyesporingsenheten beskrevet i kapittel  krever at systemet kjører på operativ systemet Windows og APIet som det leveres enheten leveres med,  fungerer kun i programmeringspråkene C\# og C++. Med dette som utgangspunkt ble resten av teknologivalgene er basert på anbefalinger fra dokumentasjonen og tidligere erfaring. 
+
+
 
 
 
