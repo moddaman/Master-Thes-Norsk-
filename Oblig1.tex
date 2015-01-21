@@ -4,8 +4,8 @@
 \let\ifpdf\relax
 \usepackage{url}
 \usepackage{graphicx}
-\usepackage{float}
 \usepackage{color}
+\usepackage{float}
 
 \usepackage[section]{placeins}
 \usepackage{graphicx,pstricks}
@@ -14,21 +14,23 @@
 \usepackage{moreverb}
 \usepackage{subfigure}
 \usepackage{epsfig}
-\usepackage{subfigure}
 \usepackage{txfonts}
-\usepackage{subcaption}
 \usepackage{multirow}
 \usepackage{todonotes}
 \usepackage{glossaries}
 \usepackage[none]{hyphenat}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{listings}
+
 
 
 \graphicspath{ {Images/} }
 
 \usepackage[utf8]{inputenc}
 
-
 \tolerance=9999
+
 
 \bibliographystyle{plain}
 %\bibliographystyle{IEEEbib}
@@ -39,16 +41,19 @@
 \makeglossaries
 
 
+
+
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\textfraction}{0.1}
 \renewcommand{\floatpagefraction}{0.75}
-\usepackage{hyperref}
+\renewcommand{\chaptername}{Kapittel}
 
 \title{Forbedret brukervennlighet innen alternativ og supplerende kommunikasjon for mennesker med forsinket 
 eller avvikende språk- og kommunikasjonsutvikling.} 
+
 \author{Morten Holst Øvrebø}
 
 \begin{document}
@@ -60,10 +65,11 @@ eller avvikende språk- og kommunikasjonsutvikling.}
 
 
 \maketitle
-\begin{abstract}
-Abstract here.
-\end{abstract}
 
+
+\begin{abstract}
+Abstract here
+\end{abstract}
 \begin{acknowledgements}
 acknowledgements here. 
 \end{acknowledgements}
@@ -78,7 +84,7 @@ acknowledgements here.
 
   \newglossaryentry{WPF}{name=WPF, description={Windows  Presentation  Foundation}}
 
-
+  \newglossaryentry{XAML}{name=XAML, description={Extensible Application Markup Language}}
  
 \printglossaries
 \contentspage
@@ -294,7 +300,7 @@ Figur \ref{fig:overview} viser hvordan blikk interaksjonsserveren eksponerer fun
 \subsection{TecClient}
 
 TecClient støtter to GUI rammeverk; Windows Presentation Foundation (\gls{WPF}) og Windows Forms. 
-\cite{Dokumentasjonen} (kilde dokumentasjon).  Samhandling mellom applikasjonen og TecClienten skjer gjennom et konsept som de har valgt å kalle TecClients verktøykasse. De ulike verkøys klassene er presentert i figur \ref{fig:toolbox}. 
+ (kilde dokumentasjon).  Samhandling mellom applikasjonen og TecClienten skjer gjennom et konsept som de har valgt å kalle TecClients verktøykasse. De ulike verkøys klassene er presentert i figur \ref{fig:toolbox}. 
 
 \begin{figure}[ht!]
 \centering
@@ -393,36 +399,124 @@ Som nevnt i seksjon \ref{subsec:navigasjon} så vil et barns vokabular være så
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=140mm]{netframework4.5}
-\caption{Diagram som viser arkitekturen til .net rammeverket versjon 4.5}
-\label{fig:net-arkitektur}
-\end{figure}
-
-
-
-
-\chapter{Utvikling}
-
-I dette kapittelet vil utviklingsfasen bli beskrevet.  
-
-
-\section{Utgangspunkt}
-
-Rapporten har som mål å undersøke potensielle forbedringer noen utvalgte funksjoner (beskrevet i kap) kan ha på den eksisterende løsningen Tobii Sono Flex (\ref{chap:Tobii-Sono-Flex}). Det mest naturlige valget med henhold til utvikling, ville vært å ta utgangspunkt i eksisterende kildekode og utvidet med nødvendig kode. Problemet var at plattformen som den eksisterende koden var bygget på begynte å bli utdatert og ville gjort det vanskelig å fått implementert mye av funksjonalitet som skulle undersøkes. Hovedsaklig animasjonene. Resultatet var at utviklingen ble startet med et nytt prosjekt. Slik at første del av utviklingen var å lage en simplifisert prototype av den samme applikasjonen bare på en en annen plattform.
-
-\section{Plattform}
-
-Valget av plattform baserte seg på at det måtte være tilrettelagt for implementering av ønsket funksjonalitet, altså god støtte for brukergrensesnitt teknologi som animasjon, lyd og bildebruk. En annen viktig faktor var at rammeverket måtte være kompatibelt med øyestyringsenheten. Plattformen som best oppfulgte disse kravene var .net rammeverket til microsoft.  Rammeverket er omfattende og kan skilte med opptil flere programmeringspråk og komponenter. Rapporten vil derimot kun gi informasjon om de ulike komponentene fra .net som ble brukt og er nødvendig for videre lesning.
-
-
-\begin{figure}[ht!]
-\centering
 \includegraphics[width=140mm]{Symbgrid}
 \caption{Skjermdump hierakiet til Sono Flex}
 \label{fig:hieraki-ting}
 \end{figure}
 
 
+
+
+
+
+
+\chapter{Applikasjon}
+
+I dette kapittelet vil det bli gjort rede for utviklingen og de applikasjonen.
+
+
+\section{Utvikling}
+
+Rapporten har som mål å undersøke potensielle forbedringer funksjonene beskrevet i seksjon \ref{sec:ResearchQuestion} kan ha på den eksisterende løsningen Tobii Sono Flex (\ref{chap:Tobii-Sono-Flex}). Det mest naturlige valget for å implementere disse funksjonene ville vært å ta utgangspunkt i den eksisterende kildekode og utvidet med nødvendig kode. Problemet var at plattformen som den eksisterende koden var bygget på hadde flere begrensninger og ville gjort det vanskelig å fått implementert mye av funksjonalitet som skulle undersøkes, spesielt animasjonene. Dette gjorde at utviklingen ble startet som et nytt prosjekt og at første del av utviklingen var å lage en simplifisert prototype av den samme applikasjonen bare på en annet rammeverk.
+
+\subsection{Rammeverk}
+
+Siden grunnen til at utviklingen begynte med blanke ark var begrensninger i det eksisterende rammeverket, var det viktig at den nye som applikasjonen skulle bygges på, ikke hadde dem. Valget ble derfor basert på at den var tilrettelagt for implementering av ønsket funksjonalitet. Det vil si; god støtte for brukergrensesnitt teknologi som animasjon, lyd og bildebruk. En annen viktig faktor var at rammeverket måtte være kompatibelt med øyestyringsenheten Tobii PCEye GO.
+Valget falt derfor på Microsoft .NET. Grunnen til dette var at rammeverket oppfylte alle kravene og er godt dokumentert.
+
+
+Arkitekturen til .NET er svært omfattende og som en kan se utifra figur \ref{fig:net-arkitektur} kan det   skilte med opptil flere programmeringspråk og komponenter. Rapporten vil derimot kun gi informasjon om de ulike komponentene fra .NET som ble brukt og er nødvendig for videre lesning.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=140mm]{netframework45}
+\caption{Diagram som viser arkitekturen til .net rammeverket versjon 4.5}
+\label{fig:net-arkitektur}
+\end{figure}
+
+\subsection{Windows Presentation Foundation}
+
+Det er hovedsaklig to delsett av .NET som er brukt til å utvikle applikasjonen, programmeringspråket C-sharp sammen med presentasjonssystemet Windows Presentation Foundation (\gls{WPF}).  WPF er et grafisk system for å lage brukergrensesnitt og tilhørende logikk til Windows baserte applikasjoner, med mål å utnytte den grafiske maskinvaren best mulig. WPF bruker eXtensible Application Markup Language (\gls{XAML}), ett XML-basert språk, til å definere og kombinere ulike grensesnitt elementer. Kodesnutten \ref{lst:myLabel} viser hvordan et vindu med en knapp er definert i XAML, resultatet kan ses i figur \ref{fig:xamlButton}. 
+
+\begin{lstlisting}[language=java,caption={Kodesnutt skrevet i XAML som viser en enkel applikasjon med en knapp}
+\label{lst:myLabel}, belowcaptionskip=4pt]
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Title="Window with Button"  Width="250" Height="100">
+
+  <Button Name="button" Click="button_Click">Click Me!</Button>
+  
+</Window>
+\end{lstlisting}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=100mm]{xamlButton}
+\caption{Skjermdump av det applikasjonen som blir gjengitt ved kjøring av kodefnutt \ref{lst:myLabel}}
+\label{fig:xamlButton}
+\end{figure}
+
+
+Hver XAML-fil har en tilhørende kode-fil for håndtering av hendelser og oppførsel. Dette gjør at koden har et klart skille mellom utseende-spesifikk kode og oppførsel-spesifikk kode. Den tilhørende kode-filen til XAML koden beskrevet i kodesnutt \ref{lst:myLabel} er vist i kodesnutt \ref{lst:backbutton}. Ved å trykke på knappen bildet vil metoden button\textunderscore Click i kodefilen bli kalt og en dialogboks vist til brukeren.
+
+\begin{lstlisting}[language=java,caption={falafel}
+\label{lst:backbutton}]
+ void button_Click(object sender, RoutedEventArgs e)
+        {
+         Viser en dialogboks naar knappen trykkes
+        MessageBox.Show("Hallo!");
+        }
+\end{lstlisting}
+
+
+
+
+
+\section{Layout}
+
+Beskriv den endelige layouten.
+ - Mulighet for å endre antall rader og kolonner.
+
+\section{Organisasjon}
+Hvordan er applikasjonen organisert
+Hvor mange lag det er  mulighet for
+
+
+\section{Animasjon}
+
+Applikasjonen tilbyr flere animasjoner som brukeren kan velge mellom, enten alene eller flere i kombinasjon. Noen animasjoner kan ikke være operative samtidig ettersom det vil føre til konflikt. 
+
+
+
+Gjør rede for og forklar de ulike animasjonen
+
+\section{Navigasjon}
+Gjør rede for og forklar de forkjellige navigasjons hjelpemidlene
+
+\section{Personlig tilpasning}
+Forklar hvordan applikasjonen legger til rette for brukeren.
+    - Temaer, forkjellige farger, lyder, 
+    - Bruker kan velge hvilke animasjoner som ønskes og hurtigheten på dem.
+    
+\section{Lyd}
+    Gjør rede for de ulike lydene.
+
+
+
+
+
+
+
+
+
+
+\chapter{Dette er bare utkast og stikkord}
+
+Rapporten vil ikke gi noen videre beskrivelse av C-Sharp, derimot vil WPF bli forklart.
+
+
+\section{Teknologier}
+
+Øyesporingsenheten beskrevet i kapittel  krever at systemet kjører på operativ systemet Windows og APIet som det leveres enheten leveres med,  fungerer kun i programmeringspråkene C-Sharp og C++. Med dette som utgangspunkt ble resten av teknologivalgene er basert på anbefalinger fra dokumentasjonen og tidligere erfaring. 
 
 
 \begin{description}
@@ -435,54 +529,6 @@ Valget av plattform baserte seg på at det måtte være tilrettelagt for impleme
   \item[Versjonskontroll] Git (BitBucket)
 \end{description}
 
-
-
-
-
-\section{Teknologier}
-
-Øyesporingsenheten beskrevet i kapittel  krever at systemet kjører på operativ systemet Windows og APIet som det leveres enheten leveres med,  fungerer kun i programmeringspråkene C\# og C++. Med dette som utgangspunkt ble resten av teknologivalgene er basert på anbefalinger fra dokumentasjonen og tidligere erfaring. 
-
-
-
-
-
-\section{Layout}
-
-
-
-
-
-
-
-
-
-
-
-\chapter{Applikasjon}
-
-\section{Organisasjon}
-
-
-\section{Animasjon}
-
-\section{Navigasjon}
-
-\section{Personlig tilpasning}
-
-\subsection{Tema}
-
-\subsection{Hurtighet}
-
-
-
-
-
-
-
-
-
-\chapter{Dette er bare utkast & stikkord}
 
 Fitzergald key, personliggjør keyboardet med farger. Viktigste er at det er konsistent
 
@@ -508,7 +554,7 @@ contains specialized interaction support for common user interface frameworks su
 (WPF) andWindows Forms. The C interface, called MPACI, provides backward compatibility with older Tobii products such as
 the MyTobii software.
 
-\Todo{//Hodebevegelser har lite innvirkning på resultatene. Ved å bruke to kameraer., skriv om  3, der kan en lure inn litt om kalibreringen til øyesporingen}
+
 
 
 \subsection{Systemkrav}
@@ -533,4 +579,3 @@ For en førstegangsbruker av enheten anbefales det å gjøre en kalibrering, for
 \bibliography{sample}
 
 \end{document}
-/

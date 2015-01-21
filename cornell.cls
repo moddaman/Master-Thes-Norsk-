@@ -47,7 +47,7 @@
 \NeedsTeXFormat{LaTeX2e}[2014/03/02]
 \ProvidesClass{cornell}
 [2008/4/17 v2.9
-  INFO262]
+  masteroppgave]
 \newif\ifphd
 \DeclareOption{phd}{\phdfalse}
 \DeclareOption{master}{\phdtrue}
@@ -280,8 +280,7 @@
     \vfill
     \begin{center}
       \@authorsize
-       \\
-      \@author \\
+      \@author 
       \@conferralmonth\ \@conferralyear
     \end{center}
     \vspace{0.25in}
@@ -472,9 +471,9 @@
 \newcommand{\singlespacingplus}{%
   \let\CS=\@currsize\renewcommand{\baselinestretch}{1.5}\CS}
 \newcommand{\doublespacing}{%
-  \let\CS=\@currsize\renewcommand{\baselinestretch}{2}\CS}
+  \let\CS=\@currsize\renewcommand{\baselinestretch}{1.5}\CS}
 \newcommand{\realdoublespacing}{%
-  \let\CS=\@currsize\renewcommand{\baselinestretch}{2}\CS}
+  \let\CS=\@currsize\renewcommand{\baselinestretch}{1.5}\CS}
 \newcommand{\normalspacing}{\doublespacing}
 \newcommand{\footnotespacing}{\singlespacing}
 \newcommand{\listspacing}[1]{\singlespacing} % extra arg is extensibility hook
