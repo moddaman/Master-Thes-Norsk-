@@ -118,6 +118,8 @@ International Society for Augmentative and Alternative Communication (\gls{isaac
 
 Målgruppen i denne avhandlingen er personer som har behov for ASK systemer. Mer spesifikk vil rapporten være rettet mot: (A) Mennesker som ikke har mulighet for tale- og kroppspråk,  (B) personer ikke håndterer skriftspråk og (C) at de er nybegynnere på symbolbasert kommunikasjon. Dette gjelder hovedsaklig barn i alderen 2 til 5 år, men også eldre med mentale begrensninger. Videre i dette prosjektet vil personer som møter disse kriteriene bli omtalt som barn med komplekse kommunikasjonsbehov. 
 
+
+
 \section{Mål}
 \label{sec:goal}
 
@@ -406,11 +408,6 @@ Som nevnt i seksjon \ref{subsec:navigasjon} så vil et barns vokabular være så
 \end{figure}
 
 
-
-
-
-
-
 \chapter{Applikasjon}
 
 I dette kapittelet vil det bli gjort rede for utviklingen og de applikasjonen.
@@ -490,44 +487,74 @@ Hver XAML-fil har en tilhørende kode-fil for håndtering av hendelser og oppfø
 
 
 
-\section{Layout}
+\section{Animasjoner}
 
-Beskriv den endelige layouten.
- - Mulighet for å endre antall rader og kolonner.
+Animasjoner i programvare brukes som et virkemiddel for å tiltrekke seg oppmerksomhet, underholde eller demonstrere noe. Det kan enten være en kort animasjon der en knapp tiltrer til en side når man svever over den med musen eller det kan være av den lengre sorten som en flash video.  Animasjon er i hovedsak alt som beveger seg i applikasjonen. Selv om dynamikken som animasjoner kan fungere som et positivt virkemiddel viser undersøkelser gjort av Nielsen og Loranger \cite{NielsenBok}  at for mye blinkende og bevegende elementer kan slite ut brukeren og gjør det vanskeligere å fokusere på oppgaven. Det er dette animasjonene som er implementert ønsker å finne ut av. Hvilke animasjoner fungerer som et hjelpemiddel og med det gir verdi til applikasjonen og hvilke som er distraherende for brukeren og gir en uønsket effekt.
 
-\section{Organisasjon}
-Hvordan er applikasjonen organisert
-Hvor mange lag det er  mulighet for
-
-
-\section{}
-
-Tobii Sono flex har 
-
-
-I de neste seksjonene kommer jeg til å beskrive funskjoner som har blitt implementert.
-
-\section{Animasjon}
-
-Animasjoner i programvare brukes som et virkemiddel for å tiltrekke seg oppmerksomhet, underholde eller demonstrere noe. Det kan enten være en kort animasjon som at en knapp tilter til en side når man svever over den med musen eller det kan være av den lengre sorten som en elefant som står å danser. Animasjon er i hovedsak alt som beveger seg i applikasjonen. Selv om animasjoner kan fungere som et positivt virkemiddel gjør Nielsen og Loranger et poeng ut av at for mye blinkende og bevegende elementer kan slite ut brukeren og gjør det vanskeligere å fokusere på oppgaven. Det er nettopp dette animasjonene som er implementert skal finne ut av. Hvilke animasjoner fungerer som et hjelpemiddel og med det gir verdi til applikasjonen og hvilke som er distraherende for brukeren og gir en uønsket effekt.
-
-
-Animasjonene i denne applikasjonen skjer som en respons til at brukeren trykker på et symbol. Hva som skjer avhenger av hvilken type symbol det er. De ulike typene som finnes i symboltabellen ble forklart i seksjon \ref{subsubsec:symboltabell} som ordsymbol, kategorisymbol og navigasjonssymbol. 
+I denne prototypen skjer animasjonene som en respons til at brukeren trykker på et symbol. Hva som skjer avhenger av hvilken type symbol det er. De ulike typene som finnes i symboltabellen ble forklart i seksjon \ref{subsubsec:symboltabell}, og er ordsymbol, kategorisymbol og navigasjonssymbol.
 
 
 \subsection{Animasjoner: ordsymbol}
-Når en bruker trykker på et ordsymbol, vil symbolet legge seg i setningslisten og er da klar for gjøres om til tydelig tale. I Sono Flex blir brukeren presentert for endringen ved at symbolet vises setningsfeltet. Prototypen ønsker å gi en mer visuell representasjon av denne endringen til brukeren. 
 
-I) Symbolet flyter fra opprinnelig posisjon over de andre symbolene til setningsfeltet. 
-II) Symbolet krympes,  i setningslisten vil det samme symbolet begynne som begynne som lite og vokse tilbake til samme størrelse. 
+Når en bruker trykker på et ordsymbol, vil symbolet legge seg i setningslisten og er da klar for gjøres om til tydelig tale når brukeren har fullført 
+I Sono Flex blir brukeren presentert for endringen ved at symbolet vises i setningsfeltet. Prototypen ønsker å gi en mer visuell representasjon av denne endringen til brukeren. Ved å la brukeren kunne velge mellom to animasjoner som oppstår når han trykker på ønsket ordsymbol. De to animasjonene fungerer som følgende:
 
-//vis bilder,  forklar animasjonene bedre. 
 
-Med dette ønsker å blablabla
+I) Brukeren trykker på et ordsymbol.
+   Ordsymbolet krympes til 5 prosent av størrelsen
+   I setningslisten vil en kopi av det krympede ordsymbolet dukke opp.
+   Kopien forstørres så til den opprinnelige størrelsen.
+   Ordsymbolet som opprinnelige ble trykket blir forstørret til opprinnelig størrelse.
+
+   
+II) Brukeren trykker på et ordsymbol.
+    Ordsymbolet beveger seg ut av sin posisjon og glir mot den posisjonen den vil ha i setningslisten.
+    Når den har truffet posisjonen i setninglisten stopper den opp og blir.
+
+    Med disse animasjonen vil en først og fremst gi brukeren beskjed om at et valg har blitt gjort, men de ønsker også gjøre bruk av programvaren mer spennende.  I Sono Flex  vil ingen av knappene ha noe visuelt som gjør at brukeren kan skille hva som skjer, utenom at symboltabellen bytter ut de eksisterende symbolene. I dette tilfelle vil en se at symbolet går fra å være en statisk symbol til å bli flyttet til setningslisten og bli en del av ønsket setning. 
+
+
 
 \subsection{Animasjon: Kategorisymbol}
 
+Når en bruker trykker på et kategorisymbol vil symbolene i symboltabellen byttes ut med symbolene som hører til i den gjeldene kategorien. Hvis en trykker på kategorien "dyr" så vil tabellen fylles med ordsymbol som "Hund", "katt", "tiger" o.s.v. Her ønsker animasjonen å hjelpe til med å fortelle at man ikke trykker på ordet dyr, men kategorien dyr og at brukeren får en forståelse for forskjellen mellom dem. Animasjonen startet ved at symbolet som brukeren trykket på forstørres helt til den dekker hele symboltabellen. Det vil si at ingen av de andre symbolene vises, kun kategorisymbolet. Symbolet vil så igjen forminskes, men symbolene i tabellen vil være erstattet av symbolene som tilhører kategorien. 
+
+
 \subsection{Animasjon: Navigasjonssymbol}
+
+
+Den siste typen symbol er navigasjon og ved interaksjon vil den navigere mellom sider når det ikke er plass til alle symbolene på en side. Det vil si at symbolet skal kunne navigere fremover, fra side 1 til 2 og 2 til 3 og bakover igjen. Når brukeren trykker fremover starter animasjonen ved at alle symbolene som er på gjeldene side og neste side begynner å bevege seg mot venstre. Slik at symbolene på gjeldene side kontinuerlig blir byttet ut med de på neste. Symbolene på siden sklir ut, mens symbolene på neste sklir inn og overtar plassene. Når brukeren nå trykker på bakover symbolet vil det samme skje bare at symbolene sklir mot høyre.
+
+
+
+
+\section{UTKAST: ikke les}
+
+
+Som med animasjon kan lyd både virke for og i mot sin hensikt. Horanger og Nielsen fant ut under testing av nettsider at ungdommer og voksne fant kvitre og kime lyder var irriterende, men at de appellerte til barn. 
+
+Sammen med animasjoner kan lyder i programvare være effektive til å gi brukeren tilbakemelding på en handling. Eksempelvis kan lyder brukes til varsle brukeren om at de har gjort et feil valg \cite{}, men som med animasjoner vil for mange lyder og uventede lyder være distraherende og irriterende. Nielsen og Loranger fant 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 I prototypen ønsker animasjonen å vise hva som skjer,  ved at symbolet beveger seg fra opprinnelige posisjon til set
@@ -588,15 +615,6 @@ Forklar hvordan applikasjonen legger til rette for brukeren.
 \section{Lyd}
     Gjør rede for de ulike lydene.
 
-
-
-
-
-
-
-
-
-
 \chapter{Dette er bare utkast og stikkord}
 
 Rapporten vil ikke gi noen videre beskrivelse av C-Sharp, derimot vil WPF bli forklart.
@@ -650,6 +668,8 @@ the MyTobii software.
 \subsection{Nøkkelfunksjoner og konsepter}
 
 \section{}
+
+
 
 Første gang en kobler til må en gå igjennom ett oppsett. Dette innebærer måling av den aktuelle skjermen som brukes og en kalibrerings rutine. For å oppnå nøyaktig øyesporing.  
 
