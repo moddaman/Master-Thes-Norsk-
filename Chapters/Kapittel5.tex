@@ -6,14 +6,12 @@ I dette kapittelet vil det bli gjort rede for utviklingen og de applikasjonen.
 
 \section{Utvikling}
 
-
 Målet med forskningen er å undersøke potensielle forbedringer funksjonene beskrevet i seksjon \ref{sec:ResearchQuestion} kan ha på den eksisterende løsningen Tobii Sono Flex (\ref{chap:Tobii-Sono-Flex}). Det mest naturlige valget for å implementere disse funksjonene ville vært å ta utgangspunkt i den eksisterende kildekode og utvidet med nødvendig kode. Problemet var at plattformen som den eksisterende koden var bygget på hadde flere begrensninger og ville gjort det vanskelig å fått implementert mye av funksjonalitet som skulle undersøkes, spesielt gjelder det animasjonene. Dette gjorde at utviklingen ble startet som et nytt prosjekt og at første del av utviklingen var å lage en forenklet prototype av den samme applikasjonen bare på en annet rammeverk.
 
-\subsection{Rammeverk}
+\subsection{Rammeverk} //Skriv mer om  grunnen til at det eksisterende rammeverket ikke var nok
 
-Siden grunnen til at utviklingen begynte med blanke ark var begrensninger i det eksisterende rammeverket, var det viktig at den nye som applikasjonen skulle bygges på, ikke hadde dem. Valget ble derfor basert på at den var tilrettelagt for implementering av ønsket funksjonalitet. Det vil si god støtte for brukergrensesnitteknologi som animasjon, lyd og bildebruk. En annen viktig faktor var at rammeverket måtte være kompatibelt med øyestyringsenheten Tobii PCEye GO.
+Siden grunnen til at utviklingen begynte med blanke ark var begrensninger i det eksisterende rammeverket, var det viktig at den nye som applikasjonen skulle bygges på, ikke hadde dem. Valget ble derfor basert på at den var tilrettelagt for implementering av ønsket funksjonalitet. Det vil si god støtte for brukergrensesnitteknologi som animasjon, lyd og bildebruk. En begrensing var at rammeverket måtte være kompatibelt med øyestyringsenheten Tobii PCEye GO. Dette gjorde at alternativene ikke var mange. 
 Valget falt derfor på Microsoft .NET. Grunnen til dette var at rammeverket oppfylte alle kravene og er godt dokumentert.
-
 
 Arkitekturen til .NET er omfattende og som en kan se utifra figur \ref{fig:net-arkitektur} er det flere programmeringspråk og komponenter en kan velge å ta i bruk. Rapporten vil derimot kun gi informasjon om de ulike komponentene fra .NET som ble brukt og er nødvendig for videre lesning.
 
@@ -25,9 +23,32 @@ Arkitekturen til .NET er omfattende og som en kan se utifra figur \ref{fig:net-a
 \label{fig:net-arkitektur}
 \end{figure}
 
-\subsection{Windows Presentation Foundation}
+\subsection{Teknologi}
 
-Det er hovedsaklig to delsett av .NET som er brukt til å utvikle applikasjonen, programmeringspråket C-sharp sammen med presentasjonssystemet Windows Presentation Foundation (\gls{WPF}).  WPF er et grafisk system for å lage brukergrensesnitt og tilhørende logikk til Windows-baserte applikasjoner som utnytter den grafiske maskinvaren best mulig. WPF bruker eXtensible Application Markup Language (\gls{XAML}), som er et XML-basert språk til å definere og kombinere ulike grensesnittelementer. Figur \ref{lst:myLabel} viser hvordan et vindu med en knapp er definert i XAML. Resultatet kan ses i figur \ref{fig:xamlButton}. 
+Innenfor .NET sto valget mellom teknologiene Windows Store Apps, Windows Presentation Foundation(\gls{WPF}), Windows Forms og Silverlight.  Windows Forms ble utelukket ettersom dette er teknologien som Sono Flex er bygget på og som hadde begrensinger som gjorde at flere ønskede funksjoner ble vanskelig å implementere. Windows Store Apps hadde mye av den ønskede funksjonaliteten, samtidig som den fortsatt vedlikeholdes. For å distribuere slike applikasjoner brukes som navnet sier: Windows Store. Problemet er at for å få publisert applikasjonen der, kreves godkjenning av Windows. En tidkrevende ressurs og med tanke på at applikasjonen antageligvis hurtig oppdateres kan dette bli et problem. Dette i sammenheng med at disse applikasjonene ikke er kompatible med Windows 7\ref{Windo0:online} gjorde at denne teknologien ble valgt bort. Til slutt sto valget mellom Silverlight og WPF. Silverlight er en kryssplattform, kryssweb implementasjon av .NET rammeverket som har god støtte for grafiske elementer, animasjon og audio, og derfor en god kandidat. Funksjonaliteten i silverlight er et subset av WPF, som vil si at WPF minst har samme funksjonalitet som silverlight. Med unntak av Deep Zoom en funksjon som applikasjonen ikke hadde spesifikk behov for \ref{WPFvsSilverlight:online}. I tilegg til å tilby mer funksjonalitet var også bruk av wpf sammen med øyesporingsenheten beskrevet i enhetens dokumentasjon. Noe som vil gjøre prosessen med å integrere øyesporing i applikasjonen lettere. Dette gjorde at vi bestemte oss å utvikle i wpf.
+
+
+\section{Windows Presentation Foundation}
+
+Ifølge Adam Nathan{Adam nathan bok side 9}, programvare arkitekt hos Microsoft er grunnen til at WPF ble lansert er at til tross for grafikk maskinvare hele tiden har blitt bedre og billigere og  forbrukerens forventninger fortsatt å stige, så er det ingen som har adressert vanskeligheten med å lage moderne brukergrensesnitt ref{Adam nathan bok side 9}.  Han argumenterer med at ja det fantes utviklere på tiden som for eksempel brukte bitmap bilder til å lage kulere knapper istedenfor å bruke standardknapp kontrollen. Problemet er at disse formene fort tilpasning ikke bare kan være ressurskrevende å utvikle, men også gi en dårligere brukeropplevelse. Nathan forteller derfor at Microsoft innså at det var et behov for noe helt nytt som ikke hadde de samme begrenseningene som GDI+ og USER ga, men som samtidig hadde produktiviteten som folk likte fra rammeverk som Windows Forms. Sammen med at applikasjoner bygget med HTML og Javascript steg i populæritet. Trengte Windows en teknologi som var like morsom og enkel å bruke som disse, men samtidig som den utnyttet kraften den aldri-stoppende utviklingen av datamaskiner har gitt.
+
+
+
+
+men før wpf, har ikke vanskeligheten med å lage moderne brukergrenesnitt blitt adressert  
+
+WPF er ifølge Microsoft \ref{Getti7:online} et brukergrensesnitt rammeverk som en kan lage rikholdige, interaktive klient applikasjoner. Med en Utviklingsplattform som støtter et bredt sett av applikasjons funksjoner, inkludert en applikasjonsmodell, resursser, kontroller, grafikk, layout, databinding, dokumenter og sikkerhet. Dette vil si at man i teorien ikke trenger noe annet en WPF for å bygge en fullverdig Windows klient applikasjon. 
+
+
+Adam Nathan forklarer i sin bok at det relativt enkelt for programmerer som har jobbet med Windows Forms, men også at WPF har en svært bratt læringskurve. 
+
+WPF kom som et resultat av at de innså at noe måtte gjøres med begrensingene som hadde 
+
+
+
+
+
+ WPF bruker eXtensible Application Markup Language (\gls{XAML}), som er et XML-basert språk til å definere og kombinere ulike grensesnittelementer. Figur \ref{lst:myLabel} viser hvordan et vindu med en knapp er definert i XAML. Resultatet kan ses i figur \ref{fig:xamlButton}. 
 
 \begin{lstlisting}[language=java,caption={Kodesnutt skrevet i XAML som viser en enkel applikasjon med en knapp}
 \label{lst:myLabel}, belowcaptionskip=4pt]
@@ -76,14 +97,13 @@ Hver XAML-fil har en tilhørende kode-fil for håndtering av hendelser og oppfø
         }
 \end{lstlisting}
 
-\section{SymbolStix}
+
 
 
 
 \section{SymbolStix}
 
 En viktig del av programvaren er å hjelpe barn å bygge et vokabular ved å visualisere ord med bilder. Det vil si at for hvert ord må det finnes et bilde, noe som kan bli svært mange. Tobii Sono Flex har løst denne oppgaven med å bruke et kommersielt tredjeparts bildebibliotek kalt SymbolStix \ref{n2y}, utviklet av n2y. Bildene i biblioteket består av svært enkle tegninger som kun har med det mest nødvendige får å få frem konseptet eller ordet symbolet prøver å representere. Det at Sono Flex og at dette bildebiblioteket var tilgjengelig gjennom Tobii gjorde at den samme bildepakken skulle bli brukt i prototypen. Dette gjorde også medføre at ikke unødvendig med ressurser ble brukt på anskaffe bilder for hvert ord.
-
 
 
 \section{Problem}
@@ -95,7 +115,6 @@ Testing av applikasjonen viste derimot at det ikke lenger var mulig å trykke p�
 Det ble derfor prøvd å konvertere EMF filene til bitmap for så å vise de i applikasjonen. Fordelen med denne fremgangsmåten var at vi slapp å trekke inn windows forms biblioteket. Ulempen var derimot at hver gang et symbol skulle hentes så måtte dette først konverteres til Bitmap for deretter og rendres. En tidkrevende prosess som gjorde at det tok flere sekunder å laste brukergrensesnittet. Det ble derfor prøvd å konvertere alle filene og deretter lagre dem som jpg. Konverteringen ville da kun gjøres en gang. Deretter ville applikasjonen hente jpg filene direkte, uten noe omvei. Siden wpf har innebygd støtte for formatet. Igjen viste det seg at dette ikke var godt nok ettersom jpg filene hadde blitt for store i overgangen fra vektor til raster grafikk og de manglet gjennomsiktighet. For mens EMF filene lå på under 10kb endte alle de konverterte filene opp på over 100kb. Noe som i selv ikke er så stort, men som gir utslag på lastingen av applikasjonen når det kan være opp mot 200 bilder som skal lastes.
 
 Den endelig løsningen ble å laste ned et profesjonelt konverteringsverktøy kalt AVS Image converter. En svært ømfintlig prosess som tok svært lang tid, men som gjorde det mulig å konvertere de orginale EMF filene til png og samtidig holde størrelsen på rundt 10 kb.
-
 
 
 
