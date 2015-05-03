@@ -1,0 +1,6 @@
+  
+  <Grid>
+         <Border>
+            <ContentControl Content="{Binding CurrentViewModelBase}"/>
+        </Border>
+    </Grid>

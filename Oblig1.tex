@@ -22,6 +22,7 @@
 \usepackage{setspace}
 \usepackage{hyperref}
 \usepackage{listings}
+\usepackage{minted}
 
 
 
@@ -50,6 +51,7 @@
 \renewcommand{\textfraction}{0.1}
 \renewcommand{\floatpagefraction}{0.75}
 \renewcommand{\chaptername}{Kapittel}
+\renewcommand\listoflistingscaption{List of source codes}
 
 \title{Forbedret brukervennlighet innen alternativ og supplerende kommunikasjon for mennesker med forsinket 
 eller avvikende språk- og kommunikasjonsutvikling.} 
@@ -78,17 +80,15 @@ acknowledgements here.
 
  \newglossaryentry{aske}{name=ASK, description={alternativ og supplerende kommunikasjon}}
  
- 
   \newglossaryentry{PCCR}{name=PCCR, description={Pupil Centre Cornea Reflection, er en teknikk som brukes til ikke-forstyrrende øyesporing}}
 
-
   \newglossaryentry{WPF}{name=WPF, description={Windows  Presentation  Foundation}}
-
   \newglossaryentry{XAML}{name=XAML, description={Extensible Application Markup Language}}
  
 \printglossaries
 \contentspage
 \figurelistpage
+\listoflistings
 \listoftodos
 
 \normalspacing \setcounter{page}{1} \pagenumbering{arabic}
@@ -101,8 +101,6 @@ acknowledgements here.
 \input{Chapters/Kapittel4}
 \input{Chapters/Kapittel5}
 \input{Chapters/Kapittel6}
-
-
 
 
 
