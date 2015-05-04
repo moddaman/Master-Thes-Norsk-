@@ -15,13 +15,10 @@ Målet med forskningen er å undersøke potensielle forbedringer funksjonene bes
  
 \section{Kravspesifikasjon} 
  
- 
 Prototypen som skal bygges skal ikke ha all funksjonaliteten som Sono Flex har, men nok til at den greier å utføre hovedoppgaven. Som vil si at brukeren har mulighet til å skrive setninger med symboler for så å gjøre om disse til naturlig tale. For å kunne gjennomføre dette er det flere mindre oppgaver som må implementeres.  De ulike kravene vil bli beskrevet etter prioritert der de første er de mest nødvendige og kjent som kjernefunksjonalitet, deretter vil funksjonalitet som hadde vært greit å ha, men som ikke er nødvendig for applikasjonen skal kjøre.  
  
  
 \subsection{Funksjonelle krav} 
- 
- 
  
  
 Øyesporing som interaksjon - Det skal være mulig å kun bruke øyene til å operere prototypen. Det vil si at en som kun har mulighet til å bruke øyesporing skal kunne ta i bruk alle funksjonene som en har ved å bruke datamus.  Effektivitet skal væreså lik som mulig mellom de to interaksjonsformene. 
@@ -36,14 +33,8 @@ Tale - Systemet skal kunne gjøre om teksten til ethvert symbol om til tale fra 
   
 Internasjonalisering - Systemet skal minimum ha språkstøtte for engelsk, norsk, svensk, tysk og dansk. 
  
- 
 Animasjon - I prototypen skal det være animasjoner som blir aktivert når en bruker trykker på de ulike symbolene.  
-  
 Lydeffekter - Utenom talelyden, skal det også være lydeffekter som skal avspilles ved brukerinteraksjon.  
- 
- 
-Innlesning -  
- 
  
 Symbol - Hver brikke skal bestå av et ord og et symbol som representerer dette på best mulig måte. 
  
@@ -68,8 +59,6 @@ Personvern - Brukerne av programvaren er en sårbar gruppe, det vil derfor være
  
  
 I denne seksjonen vil teknologier og arbeidsområde bli beskrevet, som skal gi grunnlag for den neste seksjonen som vil gå mer innpå implementasjon valg og detaljer. 
- 
- 
  
  
 \subsection{Rammeverk} //Skriv mer om  grunnen til at det eksisterende rammeverket ikke var nok 
@@ -112,16 +101,6 @@ For å automatisere mye av utviklingen ble det valgt å bruke utviklingsmiljøet
  
  
 For versjonskontroll ble det på grunn av erfaringsmessige årsaker brukt git\cite{AboutGit:online}. Til å ta backup av git filene ble den web-baserte tjenesten Bitbucket brukt. Grunnen til dette var mye av koden fra Tobii Dynavox var konfidensiell og Bitbucket tilbyr gratis hemmelig oppbevaring. 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
  
  
 \section{eXtensible Application Markup Language} 
@@ -243,14 +222,7 @@ Figur \ref{fig:arkitektur} viser et forenklet bilde over hvordan klassene i kode
 \label{fig:arkitektur} 
 \end{figure} 
  
- 
- 
- 
- 
- 
- 
- 
- 
+
  
 ApplicationViewModel er vinduet som åpnes når programmet startes. Denne klassen fungerer som en kontainer for applikasjonen og bestemmer kun applikasjonsvinduets størrelse og navigasjon mellom de andre viewmodellene Keyboard, Welcome og UserSettings.  
  
@@ -273,12 +245,29 @@ ApplicationViewModel er vinduet som åpnes når programmet startes. Denne klasse
  
 Figur \ref{listing:Kontainer} viser hvordan ContentControl elementet i ApplicationView fungerer som en kontainer ved at innholdet er bundet til egenskapen CurrentViewModelBase. Som vil si at innholdet i ContentControl vil basere seg på hva som er satt som CurrentViewModelBase i ApplicationViewModel. Figur\ref{listing:CurrentAppView} viser hvordan denne egenskapen er implementert i Viewmodellen. Utfra koden så kan man se at til forskjell fra viewet, som hadde en referanse til egenskapen, så er det ingen direkte referanse fra viewmodellen til viewet. Dette er for å følge prinsippet til MVVM om at viewmodellen ikke skal ha noe kjennskap til Viewet, som gjør koden løs koblet(les: loose coupled). Men siden dette er en verdi som antakeligvis vil endre seg i løpet av kjøretiden er det nødvendig at Viewet blir gjort oppmerksom på forandring. Dette skjer ved å avfyre RaisePropertyChanged, dette kallet vil varsle rammeverket om at en endring har skjedd. Når da Viewet har en binding til denne egenskapen vil han bli oppmerksom på endringen og oppdatere deretter \cite{MVVM4:online}. 
  
- 
 CurrentViewModelBase er av typen ApplicationViewModelBase som vil si at det som er i kontaineren må være av nettopp denne typen. ApplicationViewModelBase er som man ser utifra figur  en abstrakt og har kun en abstrakt metode for å hente navn.  Det vil si at de klassene som arver fra ApplicationViewModel må implementere metoden. Fra figur kan man se at de klassene som arver fra ApplicationViewModel og med det har mulighet til å være i kontaineren er, KeyboardViewModel, UserSettingsViewModel og WelcomeViewModel. Sammen representerer disse hoved funksjonaliteten til programvaren. KeyboardViewModel er hoveddelen av applikasjonen, det her en bruker har mulighet til å skrive setninger med å trykke på de ulike symbolene for så å gjøre dem om til tale. I UserSettings kan en bruker se og endre på de ulike innstillingene. Mens WelcomeViewModel er kun laget for testingen og funksjonaliteten er begrenset til at en bruker kan velge alder og kalibrere øyesporingsenheten. 
  
  
  
+ \subsection{Skrivebord}
+
+
+Skrivebordet er 
+
+
+//Dataservice
+//Innlesning JSONparser / Text-parser
+    //Formatet på teksten
+    //Oppretter dictionary med symboltabeller
+    //Ulempe forward backward
+    //Gjør spørring
+    
+
+
+
+
  
+ //skriv om all de ulike funksjonene og hvordan de fungererma
  
  
  
@@ -329,9 +318,7 @@ Den endelig løsningen ble å laste ned et profesjonelt konverteringsverktøy ka
  
  
  
- 
- 
- 
+
  
  
 \section{Layout} 
@@ -342,20 +329,17 @@ Prototypen har den samme layouten som Tobii Sono Flex, med en menylinje etterful
  
 \subsection{Menylinjen} 
  
- 
 Menylinjen dekker 1/5 del av applikasjonens vindu og består av 4 knapper og listen over ord som brukeren har trykket på. Denne listen vil heretter bli referert til som ordlisten. 
  
  
 \subsubsection{Tilbaketasten} 
- 
  
 Tasten som befinner seg til høyre for ordlisten er tilbake tasten. Som på et vanlig tastatur vil et trykk på denne knappen medføre at det siste ordet i ordlisten fjernes. 
  
  
 \subsubsection{Ordlisten} 
  
- 
-Når en bruker trykker på et ordsymbol så vil dette legge seg i ordlisten og når han trykker på "prate" knappen så vil ordene i listen bli gitt gjennom høyttalerne som naturlig tale og deretter fjernes fra listen. Selv om det er plass til uendelig med ord i listen så vil det kun være mulig for brukeren å se maks 4 om gangen.  Hvis det allerede er fire symboler i listen når brukeren trykker på et nytt symbol, så vil de tre første bli "fjernet" mens det fjerde og det nye symbolet vil være igjen. Hvis brukeren igjen fjerner de to siste ordene ved å trykke på tilbaketasten,  vil ordene som kommer før igjen bli presentert for brukeren.  
+Når en bruker trykker på et ordsymbol så vil dette legge seg i ordlisten og når han trykker på "prate" knappen så vil ordene i listen bli gitt gjennom høyttalerne som naturlig tale og deretter fjernes fra listen. Selv om det er plass til uendelig med ord i listen så vil det kun være mulig for brukeren å se maks 4 om gangen. Hvis det allerede er fire symboler i listen når brukeren trykker på et nytt symbol, så vil de tre første bli "fjernet" mens det fjerde og det nye symbolet vil være igjen. Hvis brukeren igjen fjerner de to siste ordene ved å trykke på tilbaketasten,  vil ordene som kommer før igjen bli presentert for brukeren i setningsliseten.  
  
  
 \subsubsection{Hjem} 
@@ -375,14 +359,10 @@ Hvis brukeren første er på "hjem" siden av applikasjonen så vil knappen bytte
  
  
  
- 
 \section{Symboltabellen} 
  
  
 Symboltabellen består av like mange kolonner og rader som den gjør i Sono Flex,  men det er måten den oppfører seg på som er annerledes.   
- 
- 
- 
  
  
  
@@ -489,8 +469,6 @@ Dette vil forhåpentligvis gjøre at brukeren mer effektivt kan bekrefte valget 
  
  
  
- 
- 
 Hvilken brukeren blir presentert for er avhengig av hvilket komponent han interagerer med.  Grunnen er at hvis effektene hadde blit avspilt uten at brukeren foretar seg noe, så kan 
  
  
@@ -507,10 +485,7 @@ Lyden som vil bli gitt til brukeren vil komme i form av små lydklipp som maks v
  
  Tilbakemelding i form av lyd gir brukeren en bekreftelse på at han valget han nettopp har foretatt har blitt registrert og  
  
- 
- 
- 
- 
+
  
 Ta for eksempel brødristeren. Når den er ferdig vil brødet hoppe opp, men i tilegg vil den gi fra seg et pling. Altså brukeren vil få tilbakemelding på at han kan hente brødet både visuelt(brødet som hopper opp) og gjennom lyd(plinget). Ved å g 
  
@@ -524,8 +499,7 @@ I dag brukes lyd ofte i flere sammenhenger, i alt fra
  
  
  
- 
- 
+
  
 \section{Sammendrag} 
  
