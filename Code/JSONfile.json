@@ -1,0 +1,21 @@
+{
+    "Name": "Data",
+    "List": [
+        {
+            "Name": "i",
+            "Image": "/Images/I.jpg"
+        },
+        {
+            "Name": "Animals",
+            "Image": "/Images/Animals.jpg"
+        },
+        {
+            "Name": "Food And Drink",
+            "Image": "/Images/FoodAndDrink.png",
+        },
+        {
+            "Name": "Verbs",
+            "Image": "/Images/Verbs.jpg"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+<ScrollViewer  Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="8" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden">
+ <ItemsControl   ItemsSource="{Binding PageList}"  >
+  <ItemsControl.ItemsPanel>
+   <ItemsPanelTemplate>
+    <StackPanel Orientation="Horizontal"  />
+</ItemsPanelTemplate>
+</ItemsControl.ItemsPanel>
+<ItemsControl.ItemTemplate>
+<DataTemplate>
+<ItemsControl ItemsSource="{Binding  Mode=OneWay}"  Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ScrollViewer}}" 
+Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"  >
+<ItemsControl.ItemsPanel>
+<ItemsPanelTemplate>
+<UniformGrid  Rows="4" Columns="7" ClipToBounds="False">
+<i:Interaction.Triggers>
+<i:EventTrigger EventName="Loaded">
+<i:InvokeCommandAction Command="{Binding KeyboardModel.LoadWindowCommand, Source={StaticResource Locator}}" />
+</i:EventTrigger>
+</i:Interaction.Triggers>
+</UniformGrid>
+</ItemsPanelTemplate>
+</ItemsControl.ItemsPanel>
+<ItemsControl.ItemTemplate>
+<DataTemplate>
+<Grid>
+<navigationControls:BackSymbolControl Visibility="{Binding IsBackward, Converter={StaticResource BooleanToVisibilityConverter}}"></navigationControls:BackSymbolControl>
+<navigationControls:SuperSymbolControl  Visibility="{Binding IsSuper, Converter={StaticResource BooleanToVisibilityConverter}}"></navigationControls:SuperSymbolControl>
+<navigationControls:SymbolControl Visibility="{Binding IsWord, Converter={StaticResource BooleanToVisibilityConverter}}"></navigationControls:SymbolControl>
+<navigationControls:ForwardSymbolControl Visibility="{Binding IsForward, Converter={StaticResource BooleanToVisibilityConverter}}"></navigationControls:ForwardSymbolControl>
+</Grid>
+</DataTemplate>
+</ItemsControl.ItemTemplate>
+</ItemsControl>
+</DataTemplate>
+</ItemsControl.ItemTemplate>
+</ItemsControl>
+</ScrollViewer>
+
