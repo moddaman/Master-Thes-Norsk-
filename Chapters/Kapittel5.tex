@@ -291,7 +291,7 @@ En naiv fremgangsmåte for å lage brikkene er å statisk initialisere hver brik
 \end{figure} 
 
 
-For å kunne ta i bruk objektene definert i tekstfilen må de tolkes fra JSON format til .NET objekter. Denne prosessen, å trekke ut datastrukturer fra bytes, kalles deserialisering. For å gjøre dette har vi brukt et tredjeparts rammevekt kalt JSON.net \cite{Json.0:online}. Det finnes en innebygd funksjon i .NET kalt DataContractJsonSerializer \cite{DataC3:online} som også greier å deserialisere et JSON dokument. Grunnen til at JSON.NET ble brukt er fordi i dette biblioteket er det mulighet for å automatisk deserialisere en helt liste av JSON objekter til .NET liste uten å manuelt måtte legge inn objektene. Ifølge utviklerens egne nettsider skal rammeverket være 50 prosent kjappere enn DataContractJsonSerializer, men ytelsen er avhengig av hvilke datasett som brukes og har ikke vært blitt tatt med i betraktningen. 
+For å kunne ta i bruk objektene definert i tekstfilen må de tolkes fra JSON format til .NET objekter. Denne prosessen, å trekke ut datastrukturer fra bytes, kalles deserialisering. For å gjøre dette har vi brukt et tredjeparts rammevekt kalt JSON.net \cite{Json.0:online}. Det finnes en innebygd funksjon i .NET kalt DataContractJsonSerializer \cite{DataC3:online} som også greier å deserialisere et JSON dokument. Grunnen til at JSON.NET ble brukt er fordi i dette biblioteket er det mulighet for å automatisk deserialisere en helt liste av JSON objekter til .NET liste uten å manuelt måtte legge inn objektene. Ifølge utviklerens egne nettsider skal rammeverket være 50 prosent kjappere enn DataContractJsonSerializer, men ytelsen er avhengig av hvilke datasett som brukes, og har ikke vært en faktor i avgjørelsen. 
 
 
 \begin{listing}[ht] 
@@ -301,11 +301,21 @@ For å kunne ta i bruk objektene definert i tekstfilen må de tolkes fra JSON fo
 \end{listing} 
 
 
+Koden i figur \ref{listing:JsonParser} deserialiserer JSON dokumentet om til en dataliste. Fra linje 5 til 12 skrives teksten fra filen over til en streng som kan manipuleres i koden. På linje nummer 14 blir strengen konvertert til et dataobjekt. Det at dokumentet blir gjort om fra streng til et komplekst objekt på kun en linje viser noe av styrken til json.NET. 
+
+\begin{listing}[ht] 
+\inputminted[fontsize=\footnotesize, frame=lines,framesep=2mm,baselinestretch=1.2,bgcolor=lightgray,linenos]{csharp}{Code/CategoryModel.cs} 
+\caption{Category modellen har egenskapen navn og en liste over alle sidene som utgjør alle symbolene som hører til i kategorien} 
+\label{listing:CategoryModel} 
+\end{listing} 
 
 
+\subsection{Teksttolker}
+
+Under utviklingen ble det bare lagt inn tilfeldige ord i prototypen, men ettersom prototypen begynte å bli ferdigstilt var det behov for et større utvalg ord og symboler
 
 
-
+For å fylle opp skrivebordet med bilder til vært ord ble det under utviklingen funnet bilder fra internett. Bildene fungerte bra som plassholdere under utviklingen, men ville ikke fungert til testing på barn eller i en kommersiell utgave. Det ble derfor gitt tillatelse av Tobii Dynavox til å ta i bruk det samme bildene som de bruker i deres programvare. Denne bildepakken heter SymbolStix og er levert av et eksternt selskap som heter n2y \cite{n2y}. Sammen med denne bildepakken fulgte det med et dokument som beskrev de ulike bildene
 
 
 \begin{figure}[ht!] 
@@ -314,6 +324,33 @@ For å kunne ta i bruk objektene definert i tekstfilen må de tolkes fra JSON fo
 \caption{Bilde av dokumentet hvor de ulike symbolene er registrert} 
 \label{fig:skrivebord} 
 \end{figure} 
+
+//bilder til vært ord var hentet fra internett, ikke bra nok o.
+Ettersom det måtte testes og derfor ha mulighet for norsk, så fikk bilder av tobii dynavox, symbolstix. Kommersielt beskyttet. Hadde en annen struktur på bildene. Kun ha laget et script som skrev om til json format. Problem er at tekstdokumentet hele tiden oppdateres. Kunne da ha kjørt scriptet på ny, men fordelene me tekstparser ble for store. Derfor mulighet til begge deler. 
+
+Format til teksten er slik. Se figur blabla. Her har en egenskaper som gjør at en enkelt kan skifte språk. asddas
+
+
+FOr
+
+//Hvorfor også lage teksttolker
+    
+    //Var nødvendig for å hente mer filer fra symbolstix filen
+    // 
+    //kunne ha gjort om filen 
+
+
+\subsection{Modellene}
+
+Modellene i MVVM mønsteret enkapsulere forretningslogikk og data.Der forretningslogikk er de
+
+The model in the MVVM pattern encapsulates business logic and data. Business logic is defined as any application logic that is concerned with the retrieval and management of application data and for making sure that any business rules that ensure data consistency and validity are imposed. To maximize re-use opportunities, models should not contain any use case–specific or user task–specific behavior or application logic.
+
+
+
+
+
+
 
 
 
