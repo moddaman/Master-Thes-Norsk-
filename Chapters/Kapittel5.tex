@@ -10,49 +10,47 @@ I dette kapittelet vil det bli gjort rede for utviklingen og de applikasjonen.
 \label{sec:utgangspunkt} 
  
  
-Målet med forskningen er å undersøke potensielle forbedringer funksjonene beskrevet i seksjon \ref{sec:ResearchQuestion} kan ha på den eksisterende løsningen Tobii Sono Flex (\ref{chap:Tobii-Sono-Flex}). Det mest naturlige valget for å implementere disse funksjonene ville vært å ta utgangspunkt i den eksisterende kildekode og utvidet med nødvendig kode. Problemet var at plattformen som den eksisterende koden var bygget på hadde flere begrensninger og ville gjort det vanskelig å fått implementert mye av funksjonalitet som skulle undersøkes, spesielt gjelder dette animasjonene. Dette gjorde at utviklingen ble startet som et nytt prosjekt og at første del av utviklingen var å lage en forenklet prototype av den samme applikasjonen bare på en annet rammeverk. 
+Målet med forskningen er å undersøke potensielle forbedringer funksjonene beskrevet i seksjon \ref{sec:ResearchQuestion} kan ha på den eksisterende løsningen Tobii Sono Flex (\ref{chap:Tobii-Sono-Flex}). Det mest naturlige valget ville vært å implementert og endret nødvendig kode i den eksiterende kodebasen. Problemet var at plattformen som den eksisterende koden var bygget på hadde flere begrensninger og ville gjort det vanskelig å fått implementert mye av funksjonalitet som skulle undersøkes. Spesielt gjelder dette animasjonene. Dette gjorde at utviklingen ble startet som et nytt prosjekt og at første del av utviklingen var å lage en forenklet prototype av den samme applikasjonen bare på en annet rammeverk. 
  
  
 \section{Kravspesifikasjon} 
  
-Prototypen som skal bygges skal ikke ha all funksjonaliteten som Sono Flex har, men nok til at den greier å utføre hovedoppgaven. Som vil si at brukeren har mulighet til å skrive setninger med symboler for så å gjøre om disse til naturlig tale. For å kunne gjennomføre dette er det flere mindre oppgaver som må implementeres.  De ulike kravene vil bli beskrevet etter prioritert der de første er de mest nødvendige og kjent som kjernefunksjonalitet, deretter vil funksjonalitet som hadde vært greit å ha, men som ikke er nødvendig for applikasjonen skal kjøre.  
- 
+Prototypen skulle ikke ha all funksjonaliteten som Sono Flex har, ettersom dette hadde vært en for ressurskrevende prosess. Det ble heller bestemt å fokusere på de mest nødvendige og heller gjøre dette skikkelig. Det mest nødvendig vil si at en bruker har mulighet til å skrive setninger med symboler for så å gjøre om disse til naturlig tale. For å kunne gjennomføre dette er det flere mindre oppgaver som må implementeres. De ulike kravene vil bli beskrevet etter prioritert der de første er de mest nødvendige og kjent som kjernefunksjonalitet. Deretter vil funksjonalitet som hadde vært greit å ha, men som ikke er nødvendig for applikasjonen skal kjøre bli beskrevet.  
+
  
 \subsection{Funksjonelle krav} 
  
  
-Øyesporing som interaksjon - Det skal være mulig å kun bruke øyene til å operere prototypen. Det vil si at en som kun har mulighet til å bruke øyesporing skal kunne ta i bruk alle funksjonene som en har ved å bruke datamus.  Effektivitet skal væreså lik som mulig mellom de to interaksjonsformene. 
+\textbf{Øyesporing som interaksjon} - Det skal være mulig å bruke \underline{kun} øyene til å operere prototypen. En som tar i bruk øyesporing skal ha akkurat de samme mulighetene som han ville hatt ved å ta i bruk datamus. Effektiviteten skal være så lik som mulig mellom de to interaksjonsformene. 
+ 
+\textbf{Logging} - I systemet skal det være mulig å kunne logge all interaksjonen en bruker gjør med programvaren. Denne funksjonen vil være nødvendig for å kunne gjennomføre testingen 
  
  
-Logging - I systemet skal det være mulig å kunne logge all interaksjonen en bruker gjør med programvaren. Denne funksjonen vil være nødvendig for å kunne gjennomføre testingen 
- 
- 
-Brukertilpasning - Hver bruker skal ha mulighet til å kunne tilpasse programvaren etter sine preferanser.  
+\textbf{Brukertilpasning} - Hver bruker skal ha mulighet til å kunne tilpasse programvaren etter sine preferanser. 
   
-Tale - Systemet skal kunne gjøre om teksten til ethvert symbol om til tale fra høyttalerne. Dette vil bli aktivert på brukerens kommando. Dette vil typisk være når en bruker har fullført en setning. 
+\textbf{Tale} - Systemet skal kunne gjøre om tekst til lyd fra høyttalerne. Andre skal kunne forstå setningen brukeren har skrevet kun utifra lyden. Jo mer naturlig talen høres ut jo bedre.
   
-Internasjonalisering - Systemet skal minimum ha språkstøtte for engelsk, norsk, svensk, tysk og dansk. 
+\textbf{Norsk} - Systemet skal ha språkstøtte for norsk. Bør også legges opp til mulighet for å endre og legge til støtte for andre språk 
  
-Animasjon - I prototypen skal det være animasjoner som blir aktivert når en bruker trykker på de ulike symbolene.  
+\textbf{Animasjon} - I prototypen skal det være animasjoner som blir aktivert når en bruker trykker på de ulike symbolene.  
 Lydeffekter - Utenom talelyden, skal det også være lydeffekter som skal avspilles ved brukerinteraksjon.  
  
-Symbol - Hver brikke skal bestå av et ord og et symbol som representerer dette på best mulig måte. 
- 
+\textbf{Symbol} - For vært ord skal det være symbol som representer det. En bruker skal i teorien, ikke ha behov for å lese ordet, men skal kun i utifra ordet forstå hvilket ord det representerer. 
+
+
  
 \subsection{Ikke-funksjonelle krav} 
  
  
-Responstid -  Programvaren er kompleks og det tar lang tid å skrive med symboler, det er derfor viktig at systemet responderer kjapt og ikke gjør slik at oppgaven tar lenger tid. Slik at når brukeren trykker på noe skal det føles som om programvaren svarer momentant. 
+\textbf{Responstid} -  Programvaren er kompleks og det tar lang tid å skrive med symboler, det er derfor viktig at systemet responderer kjapt og ikke gjør slik at oppgaven tar lenger tid. Slik at når brukeren trykker på noe skal det føles som om programvaren svarer momentant. 
  
  
-Brukervennlighet - Målgruppen består av barn med som har begrenset erfaring med å operere dataprogrammer. Det er derfor viktig at det legges vekt på det og programvaren utformes på en måte som er intuitiv for brukeren.   
+\textbf{Brukervennlighet} - Målgruppen består av barn med som har begrenset erfaring med å operere dataprogrammer. Det er derfor viktig at det legges vekt på det og programvaren utformes på en måte som er intuitiv for brukeren.   
  
  
-Fleksibilitet - Kodebasen skal være tilrettelagt for vedlikehold og videreutvikling. Det er viktig at personer som ikke har deltatt i systemutvikling enklest mulig skal kunne forstå koden og på den måten enkelt kan legge til og fikse funksjoner. Programvaren skal også legge oppp til at det er enkelt og legge til animasjoner, lyd og nye brikker. 
+\textbf{Fleksibilitet} - Kodebasen skal være tilrettelagt for vedlikehold og videreutvikling. Det er viktig at personer som ikke har deltatt i systemutvikling enklest mulig skal kunne forstå koden og på den måten enkelt kan legge til og fikse funksjoner. Programvaren skal også legge oppp til at det er enkelt og legge til animasjoner, lyd og nye brikker. 
  
-Personvern - Brukerne av programvaren er en sårbar gruppe, det vil derfor være vikitg at sensitiv informasjon om disse ikke kommer på avveie. Det skal i utgangspunktet ikke lagres sensitiv data, men det hvis data lagres skal det lagres på en sikker måte. 
- 
- 
+\textbf{Personvern} - Brukerne av programvaren er en sårbar gruppe, det vil derfor være viktig at sensitiv informasjon om disse ikke kommer på avveie. Det skal i utgangspunktet ikke lagres sensitiv data, men det hvis data lagres skal det lagres på en sikker måte. 
  
  
 \section{Utvikling} 
@@ -214,9 +212,7 @@ I seksjon \ref{sec:utgangspunk} ble teknologien som ble brukt til å utvikle pro
  
 Figur \ref{fig:arkitektur} viser et forenklet bilde over hvordan klassene i kodebasen er koblet sammen. Med forenklet så menes det at flere hjelpeklasser og tredjeparts bilioteker er med i diagrammet. I tilegg så har ikke Views blitt tatt med i diagrammet, men for hver ViewModel så er det View som representerer det.  
  
- 
 
- 
 \begin{figure}[ht] 
 \centering 
 \includegraphics[width=140mm]{Arkitektur} 
@@ -271,7 +267,7 @@ For å kunne skrive med skrivebordet er det nødvendig at det er fullt opp med o
 
 \subsubsection{Data og innlesning av dem}
 
-Programvaren skal strebe etter å kunne tilby brukeren ordene han har lyst å bruke. Noe som kan være utfordrende med tanke på at et barns vokabular allerede i alder av 5 år kan være opp i mot XXXX ord. Med tanke på hvilke ord som er i vokabularet vil variere  fra person til person så må programvaren ha en god del mer enn dette. I tillegg til  må også programvaren tilby et bilde for vært av ordene. 
+Programvaren skal strebe etter å kunne tilby brukeren ordene han har lyst å bruke. Noe som kan være utfordrende med tanke på at et barns vokabular allerede i alder av 5 år kan være opp i mot XXXX ord. Med tanke på hvilke ord som er i vokabularet vil variere  fra person til person så må programvaren ha en god del mer enn dette. I tillegg må også programvaren tilby et bilde for vært av ordene. 
 
 En naiv fremgangsmåte for å lage brikkene er å statisk initialisere hver brikke med et ord og bilde. Problemet med dette er først og fremst at XAML koden blir unektelig lang som følge av at en må skrive en knapp for vært tilfelle. Den at en også må inn i koden for å gjøre endringer eller legge til nye ord, er ugunstig ettersom det er en ressurskrevende prosess. Løsningen på dette var å oppbevare alle ordene i en separat fil for å skille mellom brukergrensesnitt og data. For at maskinen skulle ha mulighet til å lese dataene ble de lagret i JavaScript Object Notation(JSON) format. JSON er ifølge sine egne nettsider \cite{JSON7:online} et lettvekt data-utvekslings format. Som er lett for mennesker å lese og skrive og det er lett form maskiner å tolke og generere. Kode \ref{listing:jsonfile} viser et utdrag fra json filen hvor ordene og stien til bildet som representerer ordet, er lagret. Filen består i en liste med JSON objekter som har attributtene Name og Image. Der Name er ordet og image er stien til symbolet. Dette er bare et lite utdrag fra filen og viser kun det som ville tilsvart fire brikker i programvaren. Det første objektet "I" er et ord, mens de tre neste er kategorier. Hver kategori består av flere ord. Ordene som tilhører en kategori er lagret i en egen fil i en mappe med samme navn. Figur \ref{jsonstructure} viser strukturen på filene, der hver kategori har sin egen mappe. Dette gjør at data hentes "just-in-time". Det vil si at istedenfor at ordene ligger i minnet til enhver tid, så hentes de kun når ved behov. Eksempelvis hvis en bruker trykker på kategorien "Food and Drink" så vil ordene hentes fra "FoodAndDrink.json" i mappen "FoodAndDrink". Noe som sparer på minnet, men som kan forringe kjøretiden. For når det er snakk om så store mengder data som alle ordene ville gitt, er det ikke gunstig å bevare dem i minnet. 
 
@@ -312,41 +308,39 @@ Koden i figur \ref{listing:JsonParser} deserialiserer JSON dokumentet om til en 
 
 \subsection{Teksttolker}
 
-Under utviklingen ble det bare lagt inn tilfeldige ord i prototypen, men ettersom prototypen begynte å bli ferdigstilt var det behov for et større utvalg ord og symboler
+Under utviklingen ble det bare lagt inn tilfeldige ord i prototypen, men ettersom prototypen begynte å bli ferdigstilt var det behov for et større utvalg ord og symboler Det ble derfor gitt tillatelse av Tobii Dynavox til å ta i bruk det samme bildene som de bruker i deres programvare. Denne bildepakken heter SymbolStix og har gir tilgang på cirka 16 000 symboler og er levert av et eksternt selskap som heter n2y \cite{n2y}. 
+
+\begin{itemize}
+\label{itm:egenskaper}
+\item Symbol ID
+\item Dato oppdatert
+\item Dato laget
+\item Kategori Navn 
+\item Filnavn
+\item Filsti
+\item Ord
+\item Synonymer
+\item Tysk, nederlandsk, norsk, svensk, dansk, engelsk, spansk, italiensk, fransk, portugisisk.
+\end{itemize}
 
 
-For å fylle opp skrivebordet med bilder til vært ord ble det under utviklingen funnet bilder fra internett. Bildene fungerte bra som plassholdere under utviklingen, men ville ikke fungert til testing på barn eller i en kommersiell utgave. Det ble derfor gitt tillatelse av Tobii Dynavox til å ta i bruk det samme bildene som de bruker i deres programvare. Denne bildepakken heter SymbolStix og er levert av et eksternt selskap som heter n2y \cite{n2y}. Sammen med denne bildepakken fulgte det med et dokument som beskrev de ulike bildene
+Sammen med bildepakken fulgte det med et dokument som hadde en beskrivelse av vært symbol. For vært symbol var egenskapene beskrevet i liste \ref{itm:egenskaper} tilgjengelig. Disse var strukturert med at de kom i rekkefølge og hadde tilde notasjon(tilde) for å skille mellom dem. Dette gjorde at det var mulig å implementere en løsning for å gjøre dem om til datastrukturer. I tillegg til å tilby det samme som JSON dokumentet, ord og bildesti, så har den også ordets kategori og synonymer for ordet. Det er også mulighet for å få ordet på flere språk og synonymer til de ulike språkene. Noe som åpnet for flere muligheter, men for å få til dette, måtte det legges til en annen form for innlesing av data ettersom dokumentet ikke var lagret i JSON format og I motsetning til å dele opp symbolene opp i separate dokumenter basert på hvilken kategori de tilhørte, så var alle deklarert på et dokument. Så for å kunne løse dette sto vi mellom å lage et skript som oversatte dokumentet til JSON format eller lage en alternativ innlesning. Å omgjøre det fra tekst til JSON hadde vært mulig, problemet med dette er at dokumentet utsatt for oppdatering. Så hver gang dokumentet blir forandret må oversetting gjøres på ny. Så det ble da bestemt for å implementere en teksttolker. 
 
+Tekstolkeren er er mer kompleks enn JSON tolkeren. Hovedsaklig fordi det ikke finnes noe biliotek som automatisk tilegner egenskaper til symbolene. Egenskapene blir derfor gitt til vært symbol etterhvert som de blir lest inn. En annen utfordring var som tidligere nevnt at alt befant seg på et dokument som da totalt utgjorde 16 000 linjer med beskrivelse av symbolene. Slik at hvis en skulle ha brukt samme fremgangsmåte som med JSON parseren å kun lest inn for den gitte kategorien. Så hadde en i verste fall måtte ha lest 16 000 linjer med tekst. Dette er ikke gunstig. Dokumentet har flere kategorier og symboler som ikke er nødvendig for barn, blant annet egne kategorier som eksempel Brasil, hebraisk og sveitsisk. Det er også flere kategorier som kunne vært greit å ha, men som ikke prioriteres som blant annet kategorier om kjendiser og en egen om amerikanske byer. Det ble derfor bestemt å kun velge kategorier som var nødvendige.
 
 \begin{figure}[ht!] 
 \centering 
 \includegraphics[width=100mm]{datafil} 
 \caption{Bilde av dokumentet hvor de ulike symbolene er registrert} 
-\label{fig:skrivebord} 
+\label{fig:dok} 
 \end{figure} 
-
-//bilder til vært ord var hentet fra internett, ikke bra nok o.
-Ettersom det måtte testes og derfor ha mulighet for norsk, så fikk bilder av tobii dynavox, symbolstix. Kommersielt beskyttet. Hadde en annen struktur på bildene. Kun ha laget et script som skrev om til json format. Problem er at tekstdokumentet hele tiden oppdateres. Kunne da ha kjørt scriptet på ny, men fordelene me tekstparser ble for store. Derfor mulighet til begge deler. 
-
-Format til teksten er slik. Se figur blabla. Her har en egenskaper som gjør at en enkelt kan skifte språk. asddas
-
-
-FOr
-
-//Hvorfor også lage teksttolker
-    
-    //Var nødvendig for å hente mer filer fra symbolstix filen
-    // 
-    //kunne ha gjort om filen 
 
 
 \subsection{Modellene}
 
-Modellene i MVVM mønsteret enkapsulere forretningslogikk og data.Der forretningslogikk er de
+Modellene i MVVM mønsteret enkapsulere forretningslogikk og data. Der forretninslogikk er definert som all applikasjonslogikk med tanke på innhenting og håndtering av applikasjonsdata for forsikre seg om at data er konsistent og validering er pålagt. Bruk av modeller skal hjelpe til med å makismere gjenbruk.
 
-The model in the MVVM pattern encapsulates business logic and data. Business logic is defined as any application logic that is concerned with the retrieval and management of application data and for making sure that any business rules that ensure data consistency and validity are imposed. To maximize re-use opportunities, models should not contain any use case–specific or user task–specific behavior or application logic.
-
-
+I applikasjonen er det flere modeller, men det som blir brukt mest er Symbol modellen. Denne representerer alle data i symboltabellen. Der det blant annet er et bilde og et ord som representerer dette bildet. Den har også egenskaper som forteller om hvilken type knapp det er, altså navigering,kategori eller ord. Hvilken knapp det er vil påvirke hva som skjer når en bruker interagere med denne.
 
 
 
@@ -355,63 +349,15 @@ The model in the MVVM pattern encapsulates business logic and data. Business log
 
 
 
-
-
-
-//format
-
-
-
-
-
-
-
-
-
-Funksjonaliteten som kreves for at en bruker skal kunne skrive setninger kan sammenlignes med et tastatur, men istedenfor bokstaver så er det ord.  
-
-
-
-Skrivebordet er representert i koden som KeyboardViewModel mens brukergrensesnittet gjengis KeyboardView. 
-
-
-//Dataservice
-//Innlesning JSONparser / Text-parser
-    //Formatet på teksten
-    //Oppretter dictionary med symboltabeller
-    //Ulempe forward backward
-    //Gjør spørring
-    
 
 
 
 
  
- //skriv om all de ulike funksjonene og hvordan de fungererma
  
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
 \section{SymbolStix} 
  
  
