@@ -251,7 +251,7 @@
 \newcommand{\@titlesize}{\fontsize{18}{24}\selectfont}
 \newcommand{\@subtitlesize}{\fontsize{12}{24}\selectfont}
 \newcommand{\@authorsize}{\normalsize\doublespacing} % No Pharaoh he.
-\newcommand{\@conferralmonth}{June}
+\newcommand{\@conferralmonth}{Juni}
 \newcommand{\@conferralyear}{2015}
 
 \newcommand{\titlesize}[1]{\renewcommand{\@titlesize}{#1}}
@@ -344,7 +344,7 @@
       Cornell University\ \@conferralyear%
     \else
       \normalsize \bfseries\selectfont
-      ABSTRACT
+      SAMMENDRAG
     \fi%
     \vspace{0.5\baselineskip}
   \end{center}%
@@ -379,9 +379,9 @@
   \clearpage
 }
 
-\newenvironment{acknowledgements}{%
-  \prelim@contents{Acknowledgements}
-  \chapter*{Acknowledgements}
+\newenvironment{Acknowledgements}{%
+  \prelim@contents{Takk}
+  \chapter*{Takk}
 }{%
   \cleardoublepage
 }

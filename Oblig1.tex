@@ -41,8 +41,6 @@
 
 \makeglossaries
 
-
-
 \definecolor{lightgrey}{rgb}{236,236,236}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -51,12 +49,16 @@
 \renewcommand{\textfraction}{0.1}
 \renewcommand{\floatpagefraction}{0.75}
 \renewcommand{\chaptername}{Kapittel}
-\renewcommand\listoflistingscaption{List of source codes}
+\renewcommand{\abstractname}{Sammendrag}
+\renewcommand{\acknowledgements}{Takk}
+\renewcommand*\listfigurename{Figurliste}
+\renewcommand\listoflistingscaption{Kodeliste}
+\renewcommand{\bibname}{Referanser}
 
 \title{Forbedret brukervennlighet innen alternativ og supplerende kommunikasjon for mennesker med forsinket 
 eller avvikende språk- og kommunikasjonsutvikling} 
 
-\author{Morten Holst Øvrebø}
+\author{Morten Holst Øvrebø / }
 
 \begin{document}
 
@@ -68,39 +70,48 @@ eller avvikende språk- og kommunikasjonsutvikling}
 
 \maketitle
 
+%\section*{Forord}
+
 
 \begin{abstract}
-Abstract here
+\input{Chapters/abstrakt}
 \end{abstract}
-\begin{acknowledgements}
-acknowledgements here. 
-\end{acknowledgements}
+
+
+\begin{Acknowledgements}
+\input{Chapters/Forord}
+\end{Acknowledgements}
+
+
+
 
 \newglossaryentry{isaac}{name=ISAAC, description={ International Society for Augmentative and Alternative Communication}}
 
- \newglossaryentry{aske}{name=ASK, description={alternativ og supplerende kommunikasjon}}
+ \newglossaryentry{aske}{name=ASK, description={Alternativ og Supplerende kommunikasjon}}
  
   \newglossaryentry{PCCR}{name=PCCR, description={Pupil Centre Cornea Reflection, er en teknikk som brukes til ikke-forstyrrende øyesporing}}
 
   \newglossaryentry{WPF}{name=WPF, description={Windows  Presentation  Foundation}}
   \newglossaryentry{XAML}{name=XAML, description={Extensible Application Markup Language}}
  
-\printglossaries
+\printglossary[title=Ordliste, toctitle=Beskrivelse av ord og forkortelser]
 \contentspage
 \figurelistpage
 \listoflistings
-\listoftodos
 
 \normalspacing \setcounter{page}{1} \pagenumbering{arabic}
 \pagestyle{cornell} \addtolength{\parskip}{0.5\baselineskip}
 
 
-\input{Chapters/kapittel1}
-\input{Chapters/Kapittel2}
-\input{Chapters/Kapittel3}
-\input{Chapters/Kapittel4}
-\input{Chapters/Kapittel5}
-\input{Chapters/Kapittel6}
+\input{Chapters/Introduksjon}
+\input{Chapters/Bakgrunn}
+\input{Chapters/TobiiSonoFlex}
+\input{Chapters/Øyesporing}
+\input{Chapters/Prototype}
+\input{Chapters/Brukervennlighet}
+\input{Chapters/Testing}
+\input{Chapters/Konklusjon}
+
 
 
 

@@ -4,10 +4,8 @@
 
 I dette kapittelet vil den eksisterende løsningen sono flex bli diskutert. Det vil bli gitt en grundig analyse av problemstillingen og fremgangsmåte presentert.
 
-
 \section{Tobii Sono Flex}
 \label{chap:Tobii-Sono-Flex}
-
 
 Programvaren som det tas utgangspunkt i heter Tobii Sono Flex,  og er et systematisert symbolforråd og et verktøy for alternativ og supplerende symbolspråk. Sono Flex har som mål å tilby et språk til personer som ikke enda kan lese og skrive. 
 
@@ -32,8 +30,6 @@ Figur \ref{fig:menylinje} viser menylinjen.  Denne består av 5 elementer.  Kun 
 \end{figure}
 
 
-
-
 \subsubsection{symboltabell}
 \label{subsubsec:symboltabell}
 
@@ -48,9 +44,27 @@ Figur \ref{fig:symbolgrid} viser applikasjonens symboltabell. Dette komponentet 
 \end{figure}
 
 
+\section{Kommunikasjonsform: Symboler}
+
+De som ikke har mulighet til å bruke skrift som kommunikasjonsform kan bruke tegnsystemer. Det eksisterer tre typer tegnsystemer: håndtegn(manuelle tegn) som innebærer å bruke håndbevegelser, materielle tegn vil si at en bruker fysiske objekter som brikker eller figurer og den siste er; grafiske tegn som innebærer at en bruker symboler. I denne rapporten er vil symboler bli brukt som kommunikasjonsform. Her representerer symboler et ord, frase, uttrykk eller setning. Ifølge ISAAC \cite{Tegnsystemer} er grafiske tegn brukt av mennesker med store bevegelsesvansker som gjør at de har utfordringer med å lage manuelle tegn, og mennesker med forståelsesvansker som følge av lærehemning.
+
+De vanligste grafiske tegnsystemene på markedet er fotografi, pictogram, Picture Communication Symbols(PCS), Widgit, SymbolStix og Bliss \cite{GrafiskTegn}. I prosjektet brukes SymbolStix (se figur \ref{fig:katt}). Grunnen til dette er at Sono Flex bruker dette tegnsystemet.
+
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=50mm]{katt}
+\caption{Et eksempel på et symbol som blir brukt i det grafisk tegnsystemet SymbolStix}
+\label{fig:katt}
+\end{figure}
+
+\section{Interaksjonsform: Øyestyring}
+
+Menneske-maskin-interaksjon fungerer ved at en person gir maskinen en kommando, og maskinen svarer med en respons. For at et menneske skal kunne gi en maskin ordre, er det nødvendig at maskinen har en inputenhet som tolker beskjedene fra brukeren, slik at at datamaskinen forstår dem.  Som regel er dette tradisjonelle enheter som tastatur og mus. Det eksisterer derimot mangfoldige måter å samhandle med en maskin på. I denne rapporten vil brukerinput bli gitt ved en øyestyringsenhet.  Ved å fange opp brukerens skuepunkt av et videokamera og infrarøde lys, er det mulig for maskinen å beregne hvor på monitoren personen ser. Dette gjør interaksjon mellom dem mulig. En knapp vil for eksempel bli aktivisert ved at brukeren ser på den en hvis periode. 
+
 \subsection{Brukerinteraksjon}
 
-Sono Flex tilbyr to måter for brukerinteraksjon,  mus og øyestyring. Mus fungerer som vanlig ved at brukeren svever med musepekeren over ønsket knapp og venstreklikker for å aktivere. Ved øyestyring må brukeren fokusere blikket på ønsket knapp en gitt tid for at applikasjonen skal tolke det som et klikk. 
+Sono Flex tilbyr to måter for brukerinteraksjon, mus og øyestyring. Mus fungerer som vanlig ved at brukeren svever med musepekeren over ønsket knapp og venstreklikker for å aktivere. Ved øyestyring må brukeren fokusere blikket på ønsket knapp en gitt tid for at applikasjonen skal tolke det som et klikk. 
 
 Det som skjer er at med engang brukeren fokuserer blikket på en knapp så starter en nedtelling. Figur \ref{fig:knapp-interaksjon} viser hvordan brukeren presenteres for hvor mye av nedtellingen som gjenstår.  Hvis brukeren ikke flytter blikket før nedtellingen har nådd null tolkes dette som et klikk.
 For å gi brukeren beskjed om et godkjent klikk så dannes det en rød firkant rundt knappen. 
