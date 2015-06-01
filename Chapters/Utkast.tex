@@ -121,3 +121,42 @@ For en førstegangsbruker av enheten anbefales det å gjøre en kalibrering, for
 
 
 Øyestyringsenheten som er illustrert i figur \ref{fig:tobiiPc}  . Denne
+
+
+
+\subsection{Utfordringer}
+
+En utfordring ved øyesporing er blunking. Blunking er et er en kortvarig sammentrekning av øyelokket, noe som gjør at øyet ikke vil gi refleksjon som kamera kan fange, og derfor ikke ha koordinater på hvor brukeren ser. Dette løses under analysen. Ved at og bruke koordinatene og øyets hurtighet før øyelokkene trakk seg sammen kan man ekstrapolere seg fram til en tilnærmet korrekt fiksering. 
+
+
+\subsection{Tobii Software Developer Kit}
+\label{subsec:blikk}
+
+Sammen med Tobii PCeye go følger det med programvare for å kontrollere applikasjoner som bruker sporingsenheten. De ulike komponentene er beskrevet nedenfor. I denne rapporten vil kun førstnevnte være relevant. Ettersom applikasjonen er spesialisert til blikkinteraksjon og ikke er en standard Windows applikasjon.
+
+\subsubsection{Blikk interaksjonsserver}
+en sentral HUB som tilbyr klient applikasjoner øyesporingsdata. 
+
+\subsubsection{Blikk interaksjons innstillinger}
+Et kontrollpanel for interaksjons innstillinger og oppgaver relatert til øyesporing.
+
+\subsubsection{Windows Kontroll}
+Tilbyr blikk interaksjon for standard Windows applikasjoner, ergo vanlige applikasjoner som ikke er laget for øyesporings interaksjon.
+
+
+\subsection{Blikk Interaksjonsserver}
+
+Blikk interaksjons-serveren er som nevnt i seksjon \ref{subsec:blikk} en HUB for programvaren, eller kjernen. Hovedformålet til denne komponenten er å samhandle med Øyesporingsenheten og tilby interaksjonsfunksjonalitet for å kontrollere Windows baserte applikasjoner som vil bruke sporingsdata. I tilegg er det denne komponenten som tar seg av kalibrering, sporingsstatus - samt bruker og applikasjons innstillinger.
+
+
+\section{eXtensible Application Markup Language} 
+ 
+ WPF bruker eXtensible Application Markup Language (\gls{XAML}), som er et XML-basert språk til å definere og kombinere ulike grensesnittelementer. Figur \ref{lst:myLabel} viser hvordan et vindu med en knapp er definert i XAML. Resultatet kan ses i figur \ref{fig:xamlButton}.  
+ 
+ 
+For å kunne samhandle med de grafiske objektene definert i XAML filen opprettes det alltid en tilhørende kodefil sammen med denne. Kodefilens formål er å ta seg av data og logikk for å ha et klart skille mellom utseende-spesifikk kode og oppførsel-spesifikk kode. For eksempel så vil en knapp sitt utseende og plassering bli definert XAML filen, mens hvordan data blir påvirket av interaksjon med knappen blir definert i den tilhørende kodefilen. 
+ 
+WPF oppfordrer til å skille mellom utseende spesifikk kode og oppførsel-spesifikk kode ved at grafiske elementer skrives i XAML og interaksjonen  kun brukes til generere  
+XAML brukes til å generere brukergrensesnitt,  
+,Hver XAML-fil har en tilhørende kode-fil for håndtering av hendelser og oppførsel. Dette gjør at koden har et klart skille mellom utseende-spesifikk kode og oppførsel-spesifikk kode. Den tilhørende kode-filen til XAML koden beskrevet i kodesnutt \ref{lst:myLabel} er vist i kodesnutt \ref{lst:backbutton}. Ved å trykke på knappen bildet vil metoden button\textunderscore Click i kodefilen bli kalt og en dialogboks vist til brukeren. 
+ 

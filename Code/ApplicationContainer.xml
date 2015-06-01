@@ -1,6 +1,5 @@
-  
-  <Grid>
-         <Border>
-            <ContentControl Content="{Binding CurrentViewModelBase}"/>
-        </Border>
-    </Grid>
+<Grid>
+    <Border>
+        <ContentControl Content="{Binding CurrentViewModelBase}"/>
+    </Border>
+</Grid>
