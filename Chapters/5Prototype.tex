@@ -1,20 +1,19 @@
- 
- 
 \chapter{Prototypen} 
 
-I dette kapittelet vil det bli gjort rede for utviklingen av prototypen og valg som ble gjort under prosessen. 
- 
+I dette kapittelet vil det bli gitt en innføring i valg som ble tatt før og underveis i utviklingsprosessen. 
  
 \section{Utgangspunkt} 
 \label{sec:utgangspunkt} 
- 
-Målet med forskningen er å undersøke potensielle forbedringer funksjonene beskrevet i seksjon \ref{sec:ResearchQuestion} kan ha på den eksisterende løsningen Tobii Sono Flex (\ref{chap:Tobii-Sono-Flex}). Det mest naturlige valget ville vært å implementert og endret nødvendig kode i den eksisterende kodebasen. Tobii Dynavox ønsket derimot å utforske andre muligheter. Blant annet fordi den eksisterende teknologien hadde flere begrensninger som ville gjort det vanskelig å fått implementert mye av funksjonalitet som skulle undersøkes. Spesielt gjelder dette animasjonene. Dette gjorde at utviklingen ble startet som et nytt prosjekt og at første del ble å lage en high-fidelity prototype ved å bruke "reverse engineering".
+
+Målet med forskningen var å undersøke potensielle forbedringer funksjonene beskrevet i seksjon \ref{sec:ResearchQuestion} kunne ha på programvaren Sono Flex. Det mest naturlige valget ville da  ha vært å implementert de ønskede funksjonene i den eksisterende koden. Tobii Dynavox ønsket derimot å utforske andre muligheter. Blant annet fordi den eksisterende teknologien hadde flere begrensninger som ville gjort det vanskelig å fått implementert mye av funksjonalitet som skulle undersøkes. Spesielt gjelder dette animasjonene. Resultatet ble at utviklingen ble startet som et nytt prosjekt og at første del ble å lage en high-fidelity prototype ved å bruke "reverse engineering" på Sono Flex.
 
 
- 
 \section{Kravspesifikasjon} 
- 
-Å implementere all funksjonaliteten som Sono Flex har, ville vært for ressurskrevende. Det ble heller bestemt å fokusere på de mest nødvendige og heller gjøre dette skikkelig. Slik at det var mulig å bygge videre på koden i ettertid. Det mest nødvendig vil si hovedfunksjonaliteten, som er å la en bruker ha mulighet til å skrive setninger med symboler for så å gjøre om disse til naturlig tale. For å kunne gjennomføre dette er det flere mindre oppgaver som måtte implementeres. 
+
+Å implementere all funksjonaliteten som Sono Flex har, ville vært for ressurskrevende. Det ble heller bestemt å fokusere på det mest nødvendige og heller gjøre dette skikkelig. Slik at det var mulig å bygge videre på koden i ettertid. Det mest nødvendig vil si hoved funksjonaliteten, som er å la en bruker ha mulighet til å skrive setninger med symboler for så å gjøre om disse til naturlig tale. For å kunne gjennomføre dette er det flere mindre oppgaver som måtte implementeres. 
+
+-	Mulighet for parter som ikke deltok i prosjektet å videreutvikle koden.
+-	Den må være koblet til 
 
 Under er kravspesifikasjonen. De ulike kravene er beskrevet etter prioritert, der de første er de mest nødvendige og kjent som kjernefunksjonalitet. Deretter vil funksjonalitet som hadde vært greit å ha, men som ikke er nødvendig for at applikasjonen skal kjøre, beskrevet.  
  
@@ -41,9 +40,7 @@ Under er kravspesifikasjonen. De ulike kravene er beskrevet etter prioritert, de
  
 \subsection{Ikke-funksjonelle krav} 
  
- 
 \textbf{Brukervennlighet} - Målgruppen består av barn med som har begrenset erfaring med å operere dataprogrammer. Det er derfor viktig at det legges vekt på det og programvaren utformes på en måte som er intuitiv for brukeren.   
- 
  
 \textbf{Fleksibilitet} - Kodebasen skal være tilrettelagt for vedlikehold og videreutvikling. Det er viktig at personer som ikke har deltatt i systemutvikling skal ha mulighet til å forstå koden og på den måten enkelt kan legge til og fikse funksjoner. Programvaren skal også legge oppp til at det er enkelt og legge til animasjoner, lyd og nye brikker. 
  
@@ -64,7 +61,6 @@ Til å utvikle prototypen ble det brukt .NET. Dette kom som et resultat av at
 to faktorer. Den en var dokumentasjonen til øyesporingsenheten anbefaler det og alle eksemplene av bruk er i en .NET teknologi. Den andre var at rammeverket tilbyr flere gode brukergrensesnitt-teknologier som var ønskelig med tanke på at brorparten av utviklingen handler om det grafiske.
 
 
- 
 \subsection{.NET}
  
 Arkitekturen til .NET er omfattende og som en kan se utfra figur \ref{fig:net-arkitektur} er det flere programmeringsspråk og komponenter en kan velge å ta i bruk. Rapporten vil derimot kun gi informasjon om de ulike komponentene fra .NET som ble brukt og er nødvendig for videre lesning. 
@@ -97,7 +93,6 @@ Teknologien som til slutt ble valgt var \textbf{Windows Presentation Foundation}
 \item Etterfølgeren til Windows Forms . Er ifølge Microsoft erstatteren til teknologien som blir brukt i Sono Flex \cite{User1111:online}. 
 \item God støtte for animasjoner. WPF tilbyr blant annet et eget timing system for å enkelt holde tiden når en animerer grafiske elementer \cite{Anima7:online}.
 \end{itemize}
-
 
 
 
@@ -162,110 +157,42 @@ Modell delen av MVVM står for en av de viktigste delene i enhver applikasjon, n
  
  Som navnet impliserer, skal klasser definert som View stå for visuelle elementer som vinduer, knapper, tekst, farger og organiseringen av dem. Med andre ord, selve brukergrensesnittet \cite{THEM6:online}. Grafiske objektet kan skrives ved hjelp av kode, men i MVVM skal alt som har med View og gjøre skrives XAML.
  
+\subsection{ViewModel}
  
+ Som en kan se utifra figur \ref{fig:mvvm} ligger Viewmodellen mellom Model og View. Så mens modellen holder data og Viewet presenterer data så er det Viewmodellen sin jobb å manipulere eller håndtere data. Si for eksempel at Modellen holder en dato, disse kan ofte være lagret i et format som ikke er så lettleselig. Det er da ViewModellen sin jobb å konvertere det til et mer leselig format før Viewet presenterer det til leseren. 
+ 
+\subsection{Databinding, Notifikasjon og Kommando}
 
- 
- 
- For at en bruker skal kunne utføre kommandoer og hente data gjennom et view, brukes det i WPF, databindings uttrykk som blir evaluert opp mot viewets gitte datakontekst. I MVVM vil datakonteksten være satt til viewmodellen. Det vil si som figur \ref{fig:mvvm} viser, at alle former for kommandoer, notfikasjoner og databinding skjer gjennom viewmodellen. Et view vil typisk kun forholde seg til en viewmodel, altså et en-til-en relasjon\cite{.   
- 
-\subsection{ViewModell}
- 
- ViewModellen er en nøkkelbrikke i MVVM 
- 
+Et View og en ViewModel skal ifølge mønsteret ha en en-til-en relasjon, der viewet har en referanse til viewmodellen, men ikke omvendt. For at ViewModellen og Viewet skal kunne "snakke" sammen og fortsatt holdes separat brukes databinding, kommandoer og notifikasjoner. 
 
-The viewmodel is a key piece of the triad because it introduces Presentation Separation, or the concept of keeping the nuances of the view separate from the model. Instead of making the model aware of the user’s view of a date, so that it converts the date to the display format, the model simply holds the data, the view simply holds the formatted date, and the controller acts as the liaison between the two. The controller might take input from the view and place it on the model, or it might interact with a service to retrieve the model, then translate properties and place it on the view.
+Viewet presenterer informasjon til brukeren ved å binde seg til egenskaper og kommandoer som Viewmodellen eksponerer, dette kalles for \textbf{databinding}. Når en egenskap endres i ViewModellen vil viewet bli oppmerksom på dette gjennom en notifikasjon og oppdateres deretter. 
 
-The viewmodel also exposes methods, commands, and other points that help maintain the state of the view, manipulate the model as the result of actions on the view, and trigger events in the view itself.
-
-MVVM, while it evolved “behind the scenes” for quite some time, was introduced to the public in 2005 via Microsoft’s John Gossman blog post about Avalon (the code name for Windows Presentation Foundation, or WPF). The blog post is entitled, Introduction to Model/View/ViewModel pattern for building WPF Apps and generated quite a stir judging from the comments as people wrapped their brains around it.
-
-I’ve heard MVVM described as an implementation of Presentation Model designed specifically for WPF (and later, Silverlight).
-
-The examples of the pattern often focus on XAML for the view definition and data-binding for commands and properties. These are more implementation details of the pattern rather than intrinsic to the pattern itself, which is why I offset data-binding with a different color:
- 
-Mens viewet bestemmer hvordan applikasjonen skal se ut, så bestemmer viewmodellen hvordan funksjonaliteten skal være \cite{THEM6:online}. Det er i viewmodellen at egenskaper og kommandoer som viewet kan binde seg opp mot er implementert. Når data  da endres vil view bli varslet og oppdatert deretter(Notified i figur \ref{fig:mvvm}) . På samme måte vil viewet kalle på viewmodellen om at en kommando må kjøres hvis for eksempel en bruker trykker på en knapp. Det er også Viewmodellen sitt ansvar og koordinere interaksjoner med viewet med de modellene som trengs. Det vil si at viewmodellen kan eksponere modellen direkte til viewets slik at de kan bindingen kan skje direkte til dem. Samtidig kan viewmodellen også manipulere data fra modellen , som for eksempel å kombinere to verdier. Eksempel kan være å sette sammen fornavn og etternavn fra en Person modell. Mens forholdet mellom View og Viewmodellen typisk er en-til-en, så vil ViewModellen ha en en-til-mange relasjon.  
- 
- 
-\subsection{MVVM light} 
- 
- 
-//Siden ny utvikling og lage en testplattform, viktig at kode var optimalisert 
-//Mvvm passet best skille mellom logikk og blablabla 
-//Vikitg å få med design time data, side applikasjonen er svært design tung 
-//Finn fordeler 
-//mvvm light  - IOC container, design data. 
-//Arkitektur 
- 
- 
- 
-\section{Utvikling}  
- 
- 
-I seksjon \ref{sec:utgangspunk} ble teknologien som ble brukt til å utvikle prototypen diskutert. I denne seksjonen vil arkitektturen og de viktigste utviklingsdetaljene  bli drøftet.  
- 
- 
-\subsection{Arkitektur} 
- 
- 
-Figur \ref{fig:arkitektur} viser et forenklet bilde over hvordan klassene i kodebasen er koblet sammen. Med forenklet så menes det at flere hjelpeklasser og tredjeparts bilioteker er med i diagrammet. I tilegg så har ikke Views blitt tatt med i diagrammet, men for hver ViewModel så er det View som representerer det.  
- 
-
-\begin{figure}[ht] 
-\centering 
-\includegraphics[width=140mm]{Arkitektur} 
-\caption{Figur som viser et overordnet bilde av hvordan de ulike klassene henger sammen} 
-\label{fig:arkitektur} 
-\end{figure} 
- 
-
- 
-ApplicationViewModel er vinduet som åpnes når programmet startes. Denne klassen fungerer som en kontainer for applikasjonen og bestemmer kun applikasjonsvinduets størrelse og navigasjon mellom de andre viewmodellene Keyboard, Welcome og UserSettings.  
- 
- 
-
-\begin{listing}[ht] 
-\inputminted[fontsize=\footnotesize, frame=lines,framesep=2mm,baselinestretch=1.2,bgcolor=lightgray,linenos]{xml}{Code/ApplicationContainer.xml} 
-\caption{Utdrag fra kode som viser hvordan kontainer er satt opp} 
-\label{listing:Kontainer} 
-\end{listing} 
- 
- 
-\begin{listing}[ht] 
-\inputminted[fontsize=\footnotesize, frame=lines,framesep=2mm,baselinestretch=1.2,bgcolor=lightgray,linenos]{csharp}{Code/CurrentApplicationView.cs} 
-\caption{Utdrag fra kode som viser hvordan kontainer er satt opp} 
-\label{listing:CurrentAppView} 
-\end{listing} 
- 
- 
- 
-Figur \ref{listing:Kontainer} viser hvordan ContentControl elementet i ApplicationView fungerer som en kontainer ved at innholdet er bundet til egenskapen CurrentViewModelBase. Som vil si at innholdet i ContentControl vil basere seg på hva som er satt som CurrentViewModelBase i ApplicationViewModel. Figur\ref{listing:CurrentAppView} viser hvordan denne egenskapen er implementert i Viewmodellen. Utfra koden så kan man se at til forskjell fra viewet, som hadde en referanse til egenskapen, så er det ingen direkte referanse fra viewmodellen til viewet. Dette er for å følge prinsippet til MVVM om at viewmodellen ikke skal ha noe kjennskap til Viewet, som gjør koden løs koblet(les: loose coupled). Men siden dette er en verdi som antakeligvis vil endre seg i løpet av kjøretiden er det nødvendig at Viewet blir gjort oppmerksom på forandring. Dette skjer ved å avfyre RaisePropertyChanged, dette kallet vil varsle rammeverket om at en endring har skjedd. Når da Viewet har en binding til denne egenskapen vil han bli oppmerksom på endringen og oppdatere deretter \cite{MVVM4:online}. 
- 
-CurrentViewModelBase er av typen ApplicationViewModelBase som vil si at det som er i kontaineren må være av nettopp denne typen. ApplicationViewModelBase er som man ser utifra figur  en abstrakt og har kun en abstrakt metode for å hente navn.  Det vil si at de klassene som arver fra ApplicationViewModel må implementere metoden. Fra figur kan man se at de klassene som arver fra ApplicationViewModel og med det har mulighet til å være i kontaineren er, KeyboardViewModel, UserSettingsViewModel og WelcomeViewModel. Sammen representerer disse hoved funksjonaliteten til programvaren. KeyboardViewModel er hoveddelen av applikasjonen, det her en bruker har mulighet til å skrive setninger med å trykke på de ulike symbolene for så å gjøre dem om til tale. I UserSettings kan en bruker se og endre på de ulike innstillingene. Mens \texttt{WelcomeViewModel} er kun laget for testingen og funksjonaliteten er begrenset til at en bruker kan velge alder og kalibrere øyesporingsenheten. 
- 
- 
- \subsection{Skrivebordet}
- 
-KeyboardViewModel og KeyboardView utgjør sammen det som blir kalt skrivebordet. Skrivebordet er den delen av programvaren som tilbyr hovedfunksjonaliteten, å la en bruker kunne skrive setninger. For å gjøre dette så må er det en del viktig elementer som må være tilstede. Man kan si at skrivebordet skal være en digital representasjon av det klassiske tastaturet. Der det er ord med symboler istedenfor bokstaver, og trykk skjer ikke ved fysisk trykk, men ved å se på knappen over en periode. Utenom dette skal funksjonaliteten være mye den samme. De mest nødvendige funksjonene som å kunne viske og bygge setninger må ihvertfall være tilstede. I tillegg må prototypen ha mulighet for å kunne presentere setningene som lyd. 
-
-\begin{figure}[ht!] 
-\centering 
-\includegraphics[width=100mm]{skrivebord} 
-\caption{Skjermdump av skrivebordet i prototypen} 
-\label{fig:skrivebord} 
-\end{figure} 
- 
-
-\subsubsection{Innlesning}
+En kommando er implementert i ViewModellen, men blir aktivert fra Viewet. Dette skjer ved brukerinput. For eksempel når bruker trykekr eller ser på en knapp.
 
 
-For å kunne skrive med skrivebordet er det nødvendig at det er fullt opp med ord og symboler. For å gjøre dette blir metoden texttt{GetInitialPages} vist i figur .. kalt fra konstruktøren. Denne metoden kaller så igjen på metoden GetCategory("Frontpage") i klassen \texttt{Dataservice} vist i figur ... Grunnen til at ViewModellen ikke kun direkte henter symbolene er fordi de er lagret på et tekstdokument. Så for å separere data fra presentasjon- og forretningslogikk så brukes det et data tilgang lag i mellom. For å gjøre om tekstfilen til strukturerte data bruke datatjenesten klassen TextParser til å tolke den. 
+
+\subsection{MVVM-light toolkit} 
+ 
+ MVVM-light er et bibliotek som skal hjelpe utviklere med å sette opp MVVM i kodebasen \cite{Nico0:online}. Hensikt ved biblioteket er å akselerere utviklingen av MVVM applikasjoner i WPF, Silverlight, Windows Store, Windows Phone og Xamarin \cite{MVVM8:online}. Dette skal det gjøre ved å levere et utviklingsklart fundament og flere hjelpeklasser. Blant annet så 
 
 
-\subsubsection{Data og innlesning av dem}
+Den viktigste grunnen til at dette tredjeparts biblioteket ble tatt med i prosjektet er på grunn av en funksjon kalt DesignTime-Data \cite{MVVMLightDoc:online}. For en av fordelene ved å skrive brukergrensesnittkode i XAML er at en utvikler har mulighet til å se resultatet momentant i et design vindu. Ulempen er at dette kun gjelder for statisk innhold og ikke data som må hentes fra databaser, web-tjenester eller andre kilder. Ved å bruke DesignTime-data kan man bruke en boolsk egenskap som heter IsInDesignModeStatic \cite{MVVM100123:online}. Hvis denne er sann så kan man hente dummy data, hvis ikke så kan det hentes fra den faktiske kilden. Dette gjør at man slipper å kjøre programmet for å se endringer.
 
-Programvaren skal strebe etter å kunne tilby brukeren ordene han har lyst å bruke. Noe som kan være utfordrende med tanke på at et barns vokabular allerede i alder av 5 år kan være opp i mot XXXX ord. Med tanke på hvilke ord som er i vokabularet vil variere  fra person til person så må programvaren ha en god del mer enn dette. I tillegg må også programvaren tilby et bilde for vært av ordene. 
 
-En naiv fremgangsmåte for å lage brikkene er å statisk initialisere hver brikke med et ord og bilde. Problemet med dette er først og fremst at XAML koden blir unektelig lang som følge av at en må skrive en knapp for vært tilfelle. Den at en også må inn i koden for å gjøre endringer eller legge til nye ord, er ugunstig ettersom det er en ressurskrevende prosess. Løsningen på dette var å oppbevare alle ordene i en separat fil for å skille mellom brukergrensesnitt og data. For at maskinen skulle ha mulighet til å lese dataene ble de lagret i JavaScript Object Notation(JSON) format. JSON er ifølge sine egne nettsider \cite{JSON7:online} et lettvekt data-utvekslings format. Som er lett for mennesker å lese og skrive og det er lett form maskiner å tolke og generere. Kode \ref{listing:jsonfile} viser et utdrag fra json filen hvor ordene og stien til bildet som representerer ordet, er lagret. Filen består i en liste med JSON objekter som har attributtene Name og Image. Der Name er ordet og image er stien til symbolet. Dette er bare et lite utdrag fra filen og viser kun det som ville tilsvart fire brikker i programvaren. Det første objektet "I" er et ord, mens de tre neste er kategorier. Hver kategori består av flere ord. Ordene som tilhører en kategori er lagret i en egen fil i en mappe med samme navn. Figur \ref{jsonstructure} viser strukturen på filene, der hver kategori har sin egen mappe. Dette gjør at data hentes "just-in-time". Det vil si at istedenfor at ordene ligger i minnet til enhver tid, så hentes de kun når ved behov. Eksempelvis hvis en bruker trykker på kategorien "Food and Drink" så vil ordene hentes fra "FoodAndDrink.json" i mappen "FoodAndDrink". Noe som sparer på minnet, men som kan forringe kjøretiden. For når det er snakk om så store mengder data som alle ordene ville gitt, er det ikke gunstig å bevare dem i minnet. 
+\section{Dataformat og lagring}
+
+
+Programvaren skal strebe etter å kunne tilby de ordene en bruker har lyst å bruke. Noe som kan være utfordrende med tanke på at et barns vokabular allerede i alder av 5 år kan være opp i mot 2000 ord. Hvilke 2000 ord dette er, vil også variere fra person til person noe som øker utfordringen. For vært ord må det også være et symbol som representerer det. En naiv fremgangsmåte ville vært å statisk initialisert hver brikke med et ord og bilde. Problemet med dette er først og fremst at XAML koden blir svært lang, som følge av at en må skrive en knapp for vært tilfelle. Den andre er at en også må inn i koden for å gjøre endringer eller legge til nye ord. Så for å oppbevare skille mellom data og brukergrensesnitt ble all data lagret separat. I koden er det to datastrukturer som holder data. Den ene er 
+
+Løsningen på ble å oppbevare alle ordene i en separat fil for å skille mellom brukergrensesnitt og data. Det ble laget to variasjoner for lagre data - den ene i JavaScript Object Notation(JSON) dokument den andre som et tekstdokument.
+
+\subsection{JSON}
+
+JSON er et lettvekt data-utvekslings format som skal være lett for mennesker å lese og skrive, og det er lett for maskiner å tolke og generere\cite{JSON7:online}. Figur \ref{listing:jsonfile} viser et utdrag fra en av JSON filene som brukes i prototypen. Hver JSON fil består av en liste med JSON objekter som har attributtene Name og Image. Der Name er ordet og image er stien til symbolet. Dette er bare et lite utdrag fra filen og viser kun det som ville tilsvart fire brikker i programvaren.
+
+I dette dokumentet er det første objektet "I" et ord, mens de tre neste er kategorier. Hver kategori består av flere ord. Ordene som tilhører en kategori er lagret i en egen fil i en mappe med samme navn. 
+
+Figur \ref{jsonstructure} viser strukturen på filene, der hver kategori har sin egen mappe. Dette gjør at data hentes "just-in-time". Det vil si at istedenfor at ordene ligger i minnet til enhver tid, så hentes de kun når ved behov. Eksempelvis hvis en bruker trykker på kategorien "Food and Drink" så vil ordene hentes fra "FoodAndDrink.json" i mappen "FoodAndDrink". Noe som sparer på minnet, men som kan forringe kjøretiden. For når det er snakk om så store mengder data som alle ordene ville gitt, er det ikke gunstig å bevare dem i minnet. 
 
 
 \begin{listing}[ht] 
@@ -274,7 +201,7 @@ En naiv fremgangsmåte for å lage brikkene er å statisk initialisere hver brik
 \label{listing:jsonfile} 
 \end{listing} 
  
- 
+
  \begin{figure}[ht!] 
 \centering 
 \includegraphics[width=100mm]{JsonStructure} 
@@ -283,7 +210,9 @@ En naiv fremgangsmåte for å lage brikkene er å statisk initialisere hver brik
 \end{figure} 
 
 
-For å kunne ta i bruk objektene definert i tekstfilen må de tolkes fra JSON format til .NET objekter. Denne prosessen, å trekke ut datastrukturer fra bytes, kalles deserialisering. For å gjøre dette har vi brukt et tredjeparts rammevekt kalt JSON.net \cite{Json.0:online}. Det finnes en innebygd funksjon i .NET kalt DataContractJsonSerializer \cite{DataC3:online} som også greier å deserialisere et JSON dokument. Grunnen til at JSON.NET ble brukt er fordi i dette biblioteket er det mulighet for å automatisk deserialisere en helt liste av JSON objekter til .NET liste uten å manuelt måtte legge inn objektene. Ifølge utviklerens egne nettsider skal rammeverket være 50 prosent kjappere enn DataContractJsonSerializer, men ytelsen er avhengig av hvilke datasett som brukes, og har ikke vært en faktor i avgjørelsen. 
+\subsection{JSON-Parsing}
+
+For å kunne ta i bruk objektene definert i tekstfilen må de tolkes fra JSON format til .NET objekter. Denne prosessen, å trekke ut datastrukturer fra bytes, kalles deserialisering. For å gjøre dette har vi brukt et tredjeparts rammevekt kalt JSON.net \cite{Json.0:online}. Det finnes en innebygd funksjon i .NET kalt DataContractJsonSerializer \cite{DataC3:online} som også greier å deserialisere et JSON dokument. Grunnen til at JSON.NET ble brukt er fordi i dette biblioteket er det mulighet å automatisk deserialisere en helt liste av JSON objekter til .NET liste uten å manuelt måtte legge inn objektene. Ifølge utviklerens egne nettsider skal rammeverket være 50 prosent kjappere enn DataContractJsonSerializer, men ytelsen er avhengig av hvilke datasett som brukes, og har ikke vært en faktor i avgjørelsen. 
 
 
 \begin{listing}[ht] 
@@ -295,16 +224,10 @@ For å kunne ta i bruk objektene definert i tekstfilen må de tolkes fra JSON fo
 
 Koden i figur \ref{listing:JsonParser} deserialiserer JSON dokumentet om til en dataliste. Fra linje 5 til 12 skrives teksten fra filen over til en streng som kan manipuleres i koden. På linje nummer 14 blir strengen konvertert til et dataobjekt. Det at dokumentet blir gjort om fra streng til et komplekst objekt på kun en linje viser noe av styrken til json.NET. 
 
-\begin{listing}[ht] 
-\inputminted[fontsize=\footnotesize, frame=lines,framesep=2mm,baselinestretch=1.2,bgcolor=lightgray,linenos]{csharp}{Code/CategoryModel.cs} 
-\caption{Category modellen har egenskapen navn og en liste over alle sidene som utgjør alle symbolene som hører til i kategorien} 
-\label{listing:CategoryModel} 
-\end{listing} 
 
+\section{Tekstfil}
 
-\subsection{Teksttolker}
-
-Under utviklingen ble det bare lagt inn tilfeldige ord i prototypen, men ettersom prototypen begynte å bli ferdigstilt var det behov for et større utvalg ord og symboler Det ble derfor gitt tillatelse av Tobii Dynavox til å ta i bruk det samme bildene som de bruker i deres programvare. Denne bildepakken heter SymbolStix og har gir tilgang på cirka 16 000 symboler og er levert av et eksternt selskap som heter n2y \cite{n2y}. 
+Under utviklingen ble det bare lagt inn tilfeldige ord i prototypen, men ettersom prototypen begynte å bli ferdigstilt var det behov for et større utvalg ord og symboler Det ble derfor gitt tillatelse av Tobii Dynavox til å ta i bruk det samme bildene som de bruker i deres programvare. 
 
 \begin{itemize}
 \label{itm:egenskaper}
@@ -321,8 +244,9 @@ Under utviklingen ble det bare lagt inn tilfeldige ord i prototypen, men etterso
 
 
 Sammen med bildepakken fulgte det med et dokument som hadde en beskrivelse av vært symbol. For vært symbol var egenskapene beskrevet i liste \ref{itm:egenskaper} tilgjengelig. Disse var strukturert med at de kom i rekkefølge og hadde tilde notasjon(tilde) for å skille mellom dem. Dette gjorde at det var mulig å implementere en løsning for å gjøre dem om til datastrukturer. I tillegg til å tilby det samme som JSON dokumentet, ord og bildesti, så har den også ordets kategori og synonymer for ordet. Det er også mulighet for å få ordet på flere språk og synonymer til de ulike språkene. Noe som åpnet for flere muligheter, men for å få til dette, måtte det legges til en annen form for innlesing av data ettersom dokumentet ikke var lagret i JSON format og I motsetning til å dele opp symbolene opp i separate dokumenter basert på hvilken kategori de tilhørte, så var alle deklarert på et dokument. Så for å kunne løse dette sto vi mellom å lage et skript som oversatte dokumentet til JSON format eller lage en alternativ innlesning. Å omgjøre det fra tekst til JSON hadde vært mulig, problemet med dette er at dokumentet utsatt for oppdatering. Så hver gang dokumentet blir forandret må oversetting gjøres på ny. Så det ble da bestemt for å implementere en teksttolker. 
+\subsection{Teksttolker}
 
-Tekstolkeren er er mer kompleks enn JSON tolkeren. Hovedsaklig fordi det ikke finnes noe biliotek som automatisk tilegner egenskaper til symbolene. Egenskapene blir derfor gitt til vært symbol etterhvert som de blir lest inn. En annen utfordring var som tidligere nevnt at alt befant seg på et dokument som da totalt utgjorde 16 000 linjer med beskrivelse av symbolene. Slik at hvis en skulle ha brukt samme fremgangsmåte som med JSON parseren å kun lest inn for den gitte kategorien. Så hadde en i verste fall måtte ha lest 16 000 linjer med tekst. Dette er ikke gunstig. Dokumentet har flere kategorier og symboler som ikke er nødvendig for barn, blant annet egne kategorier som eksempel Brasil, hebraisk og sveitsisk. Det er også flere kategorier som kunne vært greit å ha, men som ikke prioriteres som blant annet kategorier om kjendiser og en egen om amerikanske byer. Det ble derfor bestemt å kun velge kategorier som var nødvendige.
+Tekstolkeren er er mer kompleks enn JSON tolkeren. Hovedsaklig fordi det ikke finnes noe bibliotek som automatisk tilegner egenskaper til symbolene. Egenskapene blir derfor gitt til vært symbol etterhvert som de blir lest inn. En annen utfordring var som tidligere nevnt at alt befant seg på et dokument som da totalt utgjorde 16 000 linjer med beskrivelse av symbolene. Slik at hvis en skulle ha brukt samme fremgangsmåte som med JSON parseren å kun lest inn for den gitte kategorien. Så hadde en i verste fall måtte ha lest 16 000 linjer med tekst. Dette er ikke gunstig. Dokumentet har flere kategorier og symboler som ikke er nødvendig for barn, blant annet egne kategorier som eksempel Brasil, hebraisk og sveitsisk. Det er også flere kategorier som kunne vært greit å ha, men som ikke prioriteres som blant annet kategorier om kjendiser og en egen om amerikanske byer. Det ble derfor bestemt å kun velge kategorier som var nødvendige.
 
 \begin{figure}[ht!] 
 \centering 
@@ -332,17 +256,36 @@ Tekstolkeren er er mer kompleks enn JSON tolkeren. Hovedsaklig fordi det ikke fi
 \end{figure} 
 
 
-\subsection{Modellene}
+\section{Symbol}
 
-Modellene i MVVM mønsteret enkapsulere forretningslogikk og data. Der forretninslogikk er definert som all applikasjonslogikk med tanke på innhenting og håndtering av applikasjonsdata for forsikre seg om at data er konsistent og validering er pålagt. Bruk av modeller skal hjelpe til med å maksimere gjenbruk.
+Vært objekt i JSON filen og hver linje i tekstfilen blir tolket om til et \textbf{Symbol} objekt. Et symbol sine viktigste egenskaper er Ordet, stien til bilde som representerer ordet og hvilken kategori ordet tilhører. Den har også egenskaper som synonymer, id, forskjellige språk. Figur \ref{fig:symb} er utdrag fra symboltabellen og viser hvordan 4 symboler ser ut i brukergrensesnittet. De to øverste er ord, mens de to på nederste rad representerer kategorier. Symboler som representerer ord vil alltid ha en hvit bakgrunnsfarge med kategorien den tilhører som kant. Kategorier vil alltid ha en annen enn hvit bakgrunnsfarge. Dette er for at det skal være lettere å skille mellom dem.
 
-I applikasjonen er det flere modeller, men det som blir brukt mest er Symbol modellen. Denne representerer alle data i symboltabellen. Der det blant annet er et bilde og et ord som representerer dette bildet. Den har også egenskaper som forteller om hvilken type knapp det er, altså navigering,kategori eller ord. Hvilken knapp det er vil påvirke hva som skjer når en bruker interagere med denne.
+ \begin{figure}[ht!] 
+\centering 
+\includegraphics[width=100mm]{Symboler} 
+\caption{Fire Symboler vist i brukergrensesnittet} 
+\label{fig:symb} 
+\end{figure} 
+
+\subsection{SymbolStix}
+
+Bildene som brukes er de samme som i Sono Flex og er kommer fra en bildepakke som heter SymbolStix. Dette er en bildepakke som leveres av et eksternt selskap som heter n2y og har består av rundt 16 000 symboler \cite{n2y}. Grunnen til at disse bildene ble brukt er fordi det ville tatt for lang tid å lage bilder selv eller å finne dem på nettet, som heller ikke er helt lovlig. Disse bildene har fordelen av at de er laget av profosjonelle noe som ses gjennom den gjennomførte stilen og presise tegninger.
+
+
+\section{Kategori}
+
+Hver kategori har et navn og en liste over alle symbolene som tilhører den. Eksempelvis så vil symbolene med ord som "hest", "ku" og "hund" ligge i listen til kategorien med navnet "dyr". Figur \ref{fig:katego} viser resultatet ved å trykke på kategorien "dyr". 
+
+\begin{figure}[ht!] 
+\centering 
+\includegraphics[width=100mm]{dyr} 
+\caption{Symbolene på skrivebordet} 
+\label{fig:katego} 
+\end{figure} 
 
 
 
-\section{SymbolStix} 
- 
-En viktig del av programvaren er å hjelpe barn å bygge et vokabular ved å visualisere ord med bilder. Det vil si at for hvert ord må det finnes et bilde, noe som kan bli svært mange. Tobii Sono Flex har løst denne oppgaven med å bruke et kommersielt tredjeparts bildebibliotek kalt SymbolStix \cite{n2y}, utviklet av n2y. Bildene i biblioteket består av svært enkle tegninger som kun har med det mest nødvendige får å få frem konseptet eller ordet symbolet prøver å representere. Det at Sono Flex og at dette bildebiblioteket var tilgjengelig gjennom Tobii gjorde at den samme bildepakken skulle bli brukt i prototypen. Dette gjorde også medføre at ikke unødvendig med ressurser ble brukt på anskaffe bilder for hvert ord. 
+
  
  
 \section{Utfordringer}
@@ -351,9 +294,7 @@ En viktig del av programvaren er å hjelpe barn å bygge et vokabular ved å vis
  
 Symbolstix bildene er lagret i Enhanced Metafile Fomat (EMF), som er et 32-bit format som kan inneholde både vektor og bitmap informasjon\cite{AboutEMF}. Problemet med EMF formatet er at det ikke finnes støtte for dette i WPF, med den begrunnelse at det har blitt funnet en kritisk sårbarhet\cite{EMFVulnerability} og at formatet er mer mottakelig for sårbarheter\cite{EMFForum} enn andre bildeformater. I Sono Flex fungerer dette fint, fordi det bygget på Windows Forms(WF),  et rammeverk som har innlagt støtte for EMF. WPF har støtte for å bruke WF elementer,  en funksjon som ble lagt inn for å lette overgangen fra WF til WPF. Som igjen gjorde det mulig å hente bilder med EMF format. Ulempen er at man må trekke inn store deler av WF biblioteket noe som fører til en betraktelig økning i størrelse. For å aktivere støtten, deklarerer en WindowsFormHost i xaml filen og denne vil fungere som en kontainer for alle WF elementer. Innenfor denne kontaineren vil alt fungere som i et WF miljø. Ved å gjøre dette ble alle bildene hentes og vist i prototypen.  
  
- 
 Testing av applikasjonen viste derimot at det ikke lenger var mulig å trykke på knappene, eller mer korrekt, det var ikke mulig å trykke på  bildet der knappen var. Dette viste seg å være kjent problem, og er kjent som Airspace problemet (kilde) og kommer av at alle WF elementer uansett vil legge seg over alle WPF elementer. Et problem som ikke kunne være med i prototypen. En fix til dette ble laget og planlagt lansert i .NET versjon 4.5, men da versjonen ble lansert, var ikke denne fiksen med. Det finnes ulike omveier rundt på problemet, men få tilfredsstillende.  
- 
  
 Det ble derfor prøvd å konvertere EMF filene til bitmap for så å vise de i applikasjonen. Fordelen med denne fremgangsmåten var at vi slapp å trekke inn windows forms biblioteket. Ulempen var derimot at hver gang et symbol skulle hentes så måtte dette først konverteres til Bitmap for deretter og rendres. En tidkrevende prosess som gjorde at det tok flere sekunder å laste brukergrensesnittet. Det ble derfor prøvd å konvertere alle filene og deretter lagre dem som jpg. Konverteringen ville da kun gjøres en gang. Deretter ville applikasjonen hente jpg filene direkte, uten noe omvei. Siden wpf har innebygd støtte for formatet. Igjen viste det seg at dette ikke var godt nok ettersom jpg filene hadde blitt for store i overgangen fra vektor til raster grafikk og de manglet gjennomsiktighet. For mens EMF filene lå på under 10kb endte alle de konverterte filene opp på over 100kb. Noe som i selv ikke er så stort, men som gir utslag på lastingen av applikasjonen når det kan være opp mot 200 bilder som skal lastes. 
  
@@ -361,34 +302,29 @@ Det ble derfor prøvd å konvertere EMF filene til bitmap for så å vise de i a
 Den endelig løsningen ble å laste ned et profesjonelt konverteringsverktøy kalt AVS Image converter. En svært ømfintlig prosess som tok svært lang tid, men som gjorde det mulig å konvertere de orginale EMF filene til png og samtidig holde størrelsen på rundt 10 kb. 
 
 
-\subsection{Sette seg inn i teknologiene}
+\subsection{Opplæring}
 
-\subsection{Følge MVVM mønsteret}
+
  
- 
-\section{Applikasjonen} 
+\section{Beskrivelse av prototypen} 
 
 Prototypen har den samme layouten som Tobii Sono Flex, med en menylinje etterfulgt av en symboltabell under. Det er derimot en del variasjoner inne i hver av disse komponentene. 
  
- 
 \subsection{Menylinjen} 
  
-Menylinjen dekker 1/5 del av applikasjonens vindu og består av 4 knapper og listen over ord som brukeren har trykket på. Denne listen vil heretter bli referert til som ordlisten. 
- 
+Menylinjen dekker 1/5 del av applikasjonens vindu og består av 4 knapper og listen over ord som brukeren har trykket på. 
  
 \subsubsection{Tilbaketasten} 
  
 Tasten som befinner seg til høyre for ordlisten er tilbake tasten. Som på et vanlig tastatur vil et trykk på denne knappen medføre at det siste ordet i ordlisten fjernes. 
  
- 
 \subsubsection{Ordlisten} 
  
-Når en bruker trykker på et ordsymbol så vil dette legge seg i ordlisten og når han trykker på "prate" knappen så vil ordene i listen bli gitt gjennom høyttalerne som naturlig tale og deretter fjernes fra listen. Selv om det er plass til uendelig med ord i listen så vil det kun være mulig for brukeren å se maks 4 om gangen. Hvis det allerede er fire symboler i listen når brukeren trykker på et nytt symbol, så vil de tre første bli "fjernet" mens det fjerde og det nye symbolet vil være igjen. Hvis brukeren igjen fjerner de to siste ordene ved å trykke på tilbaketasten,  vil ordene som kommer før igjen bli presentert for brukeren i setningsliseten.  
+Når en bruker trykker på et ordsymbol så vil dette legge seg i ordlisten og når han trykker på "prate" knappen så vil ordene i listen bli gitt gjennom høyttalerne som naturlig tale og deretter fjernes fra listen. Selv om det er plass til uendelig med ord i listen så vil det kun være mulig for brukeren å se maks 4 om gangen. Hvis det allerede er fire symboler i listen når brukeren trykker på et nytt symbol, så vil de tre første bli "fjernet" mens det fjerde og det nye symbolet vil være igjen. Hvis brukeren igjen fjerner de to siste ordene ved å trykke på tilbaketasten,  vil ordene som kommer før igjen bli presentert for brukeren i setningslisten.  
  
  
 \subsubsection{Hjem} 
 Ved å trykke på "hjem" knappen vil brukeren alltid bli ført til førstesiden av applikasjonen uavhengig av hvor han befinner seg.  
- 
  
 \subsubsection{Innstillinger} 
 Hvis brukeren første er på "hjem" siden av applikasjonen så vil knappen byttes ut med en "innstillinger" knapp. Ved å trykke på denne vil det åpnes et nytt vindu hvor brukeren vil ha mulighet til å sette og endre på diverse innstillinger. Detaljene rundt denne siden er beskrevet i seksjon. 
@@ -400,12 +336,6 @@ Hvis brukeren første er på "hjem" siden av applikasjonen så vil knappen bytte
 \caption{Skjermdump av menylinjen i prototypen} 
 \label{fig:menylinjen} 
 \end{figure} 
- 
- 
-\section{Symboltabellen} 
- 
- 
-Symboltabellen består av like mange kolonner og rader som den gjør i Sono Flex,  men det er måten den oppfører seg på som er annerledes.   
  
  
 \section{Sammendrag} 
