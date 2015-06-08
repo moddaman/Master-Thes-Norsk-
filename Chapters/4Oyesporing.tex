@@ -16,7 +16,7 @@ Dette fenomenet er illustrert i figur \ref{fig:visueltArea}, som viser hvordan s
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=80mm]{fovealArea}
-\caption{Synsfeltet til et mennesker har forskjellige grader av skarphet. (bilde er hentet fra\cite{VisualImage})}
+\caption{Synsfeltet til et mennesker har forskjellige grader av skarphet. ( Hentet fra\cite{VisualImage})}
 \label{fig:visueltArea}
 \end{figure}
 
@@ -101,7 +101,7 @@ Figur \ref{fig:overview} viser hvordan øyesporingsenheten eksponerer funksjonal
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=100mm]{SoftwareArchitectureOverview}
-\caption{Bilde som viser programvare arkitekturen til blikk programvaren}
+\caption{Arkitekturen til blikkprogramvaren}
 \label{fig:overview}
 \end{figure}
 
@@ -113,30 +113,30 @@ TecClient komponenten for .NET er delt inn i verktøysklasser(toolbox classes). 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=100mm]{Toolbox}
-\caption{Verktøy klassser som er tilgjengelige gjennom TecClient komponenten verktøyskasse}
+\caption{Verktøyklasser som er tilgjengelige gjennom TecClient komponenten verktøyskasse}
 \label{fig:toolbox}
 \end{figure}
 
 
 \subsubsection{EyeTracker} Gir informasjon om øyesporingsenheten. Som for eksempel om den er tilkoblet, hvilken brukerprofil som er aktiv og hvilken kalibreringsgrad den har.
 
-\subsubsection{Kalibrering} 
-Mennesker sine øyne oppfører seg forskjellig, så for at en øyesporingsenhet skal fungere optimalt må enheten kalibreres hver bruker.  Bilde \ref{fig:kalibre} viser et eksempel på et bilde fra kalibreringsprosessen. I dette eksemplet blir brukeren bedt om å se på de ulike punktene. Mens brukeren gjør dette, samler øyesporingsenheten karakteristikk ved personens øyer. Karakteristikken brukes så til å lage en fysiologisk 3d modell av øyet som gjør at en vet hvordan brukerens øye oppfører seg \cite{www.t5:online}. 
+\subsubsection{Calibration} 
+Øyne oppfører seg forskjellig, så for at en øyesporingsenhet skal fungere optimalt må enheten kalibreres hver bruker.  Bilde \ref{fig:kalibre} viser et eksempel fra kalibreringsprosessen. I dette eksemplet blir brukeren bedt om å se på de ulike punktene. Mens brukeren gjør dette, samler øyesporingsenheten karakteristikk ved personens øyne. Karakteristikken brukes så til å lage en fysiologisk 3d modell av øyet som gjør at en vet hvordan brukerens øye oppfører seg \cite{www.t5:online}. 
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=100mm]{kalibrering}
-\caption{Ni punkter som en bruker blir bedt om å se på for at øyesporingsenheten skal kunne kalibreres\cite{VHye88:online}}
+\caption{Ni punkter som en bruker blir bedt om å se på for at øyesporingsenheten skal kunne kalibreres \cite{VHye88:online}}
 \label{fig:kalibre}
 \end{figure}
 
 
 \subsubsection{Settings}
-Settings komponentet gir tilgang til brukerprofiler og operasjoner som gjør at man kan lage nye profilet og skifte mellom dem. For eksempel er det naturlig at en bruker ikke vil gå gjennom kalibreringsprosedyren hver gang han vil ta i bruk enheten. I dette komponentet kan karakteristikken fra kalibreringen lagres i brukerprofilen som er er koblet til brukeren, slik at han slipper dette. 
+Settings-komponenten gir tilgang til brukerprofiler og operasjoner som gjør at man kan lage nye profilet og skifte mellom dem. For eksempel er det naturlig at en bruker ikke vil gå gjennom kalibreringsprosedyren hver gang han vil ta i bruk enheten. I denne komponenten kan karakteristikken fra kalibreringen lagres i brukerprofilen som er koblet til brukeren, slik at han slipper dette. 
 
 
 \subsubsection{Trackstatus}
-Tilbyr metoder, egenskaper og hendelser for å kontrollere sporingsstatus vinduet. Bilde \ref{fig:track} viser hvordan det kan brukes til å vise brukeren om enheten fanger opp øynene og hvordan hodet er plassert i forholdt til øyesporinsenheten.
+Trackstatus-komponenten tilbyr metoder, egenskaper og hendelser for å kontrollere sporingsstatus vinduet. Bilde \ref{fig:track} viser hvordan det kan brukes til å vise brukeren om enheten fanger opp øynene og hvordan hodet er plassert i forholdt til øyesporingsenheten.
 
 \begin{figure}[ht!]
 \centering
@@ -146,14 +146,14 @@ Tilbyr metoder, egenskaper og hendelser for å kontrollere sporingsstatus vindue
 \end{figure}
 
 \subsubsection{Gaze}
-Eksponerer rå blikkdata, både filtrert og ufiltrert. Det vil si at man kan finne ut hvor på skjermen en bruker ser i form av X og Y koordinater.  
+Gaze-komponenten eksponerer rå blikkdata, både filtrert og ufiltrert. Det vil si at man kan finne ut hvor på skjermen en bruker ser i form av x- og y-koordinater.  
 
 
 \subsubsection{Region / Interaction regions}
 
-Ifølge dokumentasjonen er en interaksjon region en geometrisk region på skjermen som en bruker kan interagere ved å se på den (dokumentasjon). Hvis øynene ser innenfor en slik region vil applikasjonen bli opplyst om det. Knapper er et typisk eksempel på elementer som vil bli definert som en interaksjon regioner, ettersom en bruker må ”trykke” på disse ved øynene. 
+Ifølge dokumentasjonen er en interaksjonregion en geometrisk region på skjermen som en bruker kan interagere ved å se på den (dokumentasjon). Hvis øynene ser innenfor en slik region vil applikasjonen bli opplyst om det. Knapper er et typisk eksempel på elementer som vil bli definert som interaksjonregioner, ettersom en bruker må ”trykke” på disse ved å bruke øynene. 
 
-Ved å definere en slik region kan man lytte til hendelser fra dem. Der de to viktigste hendelsene er \textbf{Focus} og \textbf{Activation}. Focus hendelsen vil aktiveres når en bruker skuer innenfor grensene til en region. En bruker vil bli opplyst om at han er innenfor en slik region ved hjelp av en indikator. Denne indikatoren vil typisk gi brukeren et signal om at en nedtelling har startet. Når nedtelling er ferdig vil Activation hendelsen bli avfyrt. Activation er konseptuelt det samme som å klikke med en datamus, og responsen vil normalt være den samme.  
+Ved å definere en slik region kan man lytte til hendelser fra dem. De to viktigste hendelsene er \textbf{Focus} og \textbf{Activation}. Focus-hendelsen vil aktiveres når en bruker skuer innenfor grensene til en region. En bruker vil bli opplyst om at han er innenfor en slik region ved hjelp av en indikator. Denne indikatoren vil typisk gi brukeren et signal om at en nedtelling har startet. Når nedtellingen er ferdig vil Activation-hendelsen bli kjørt. Activation er konseptuelt det samme som å klikke med en datamus, og responsen vil normalt være den samme.  
 
 
 
