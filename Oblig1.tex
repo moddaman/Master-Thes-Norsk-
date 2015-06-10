@@ -1,11 +1,13 @@
 
-\documentclass[phd,tocprelim]{cornell}
+\documentclass[a4paper, 12pt]{report}
+%[phd,tocprelim]{cornell}
 
 \let\ifpdf\relax
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{float}
+\usepackage[utf8]{inputenc}
 
 \usepackage[section]{placeins}
 \usepackage{graphicx,pstricks}
@@ -14,6 +16,7 @@
 \usepackage{moreverb}
 \usepackage{subfigure}
 \usepackage{epsfig}
+\usepackage{parskip}
 \usepackage{txfonts}
 \usepackage{multirow}
 \usepackage{todonotes}
@@ -24,12 +27,14 @@
 \usepackage{listings}
 \usepackage{minted}
 \usepackage{pdfpages}
+\usepackage{helvet}
+\usepackage{subfig}
+%\usepackage{palatino}
 
 
 
 \graphicspath{ {Images/} }
 
-\usepackage[utf8]{inputenc}
 
 \tolerance=9999
 
@@ -52,42 +57,57 @@
 \renewcommand{\chaptername}{Kapittel}
 \renewcommand{\abstractname}{Sammendrag}
 \renewcommand{\acknowledgements}{Takk}
-\renewcommand*\listfigurename{Figurliste}
+\renewcommand*\contentsname{Innholdsfortegnelse}
+\renewcommand{\listfigurename}{Figurliste}
 \renewcommand\listoflistingscaption{Kodeliste}
+\renewcommand\lstlistingname{Kodeutdrag}
 \renewcommand{\bibname}{Referanser}
 \renewcommand{\figurename}{Figur}
-
-\title{Forbedret brukervennlighet innen alternativ og supplerende kommunikasjon for mennesker med forsinket 
-eller avvikende språk- og kommunikasjonsutvikling} 
-
-\author{Morten Holst Øvrebø / }
-\pagenumbering{roman}
-
-\begin{document}
+\renewcommand{\baselinestretch}{1.2}
+%\setlength{\parskip}{1.2em}
 
 
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=80mm]{HIB_sort_hovedlogo_engelsk}
+
+
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\newcommand*{\titlePage}{\begingroup % Create the command for including the title page in the document
+\fontfamily{phv}\selectfont
+\centering % Center all text
+
+\vspace{200pt}
+{\Huge Prototype for testing av forbedret brukervennlighet innen alternativ og supplerende kommunikasjon} \\ % Title
+\vspace{5pt}
+
+{\Large \textsl{ }} % Subtitle or further description
+\vspace{50pt}
+
+{\Large{Morten Holst Øvrebø}}\\ % Author name
+
+\vfill % Whitespace between the author name and the publisher logo
+
+{\Large Masteroppgave i programutvikling ved \\
+Institutt for data- og realfag, Høgskolen i Bergen \\
+Institutt for informatikk, Universitetet i Bergen\\ }
+\vspace{10pt}
+{\large Juni 2015} % Month and year published
+
+\begin{figure}[h!]
+	\captionsetup[subfigure]{labelformat=empty}
+	\subfloat[][]{\includegraphics[width=50pt]{HIB_sort_hovedlogo}}
+	\hfill
+	\subfloat[][]{\includegraphics[width=50pt]{Images/uib-logo.eps}}
 \end{figure}
 
 
-\maketitle
-\frontmatter
-%\section*{Forord}
+\endgroup}
 
 
-\begin{abstract}
-\input{Chapters/01abstrakt}
-\end{abstract}
+\author{Morten Holst Øvrebø}
+\pagenumbering{roman}
 
-
-\begin{Acknowledgements}
-\input{Chapters/02Forord}
-\end{Acknowledgements}
-
-
-
+\begin{document}
 
 \newglossaryentry{isaac}{name=ISAAC, description={ International Society for Augmentative and Alternative Communication}}
 
@@ -97,14 +117,62 @@ eller avvikende språk- og kommunikasjonsutvikling}
 
   \newglossaryentry{WPF}{name=WPF, description={Windows  Presentation  Foundation}}
   \newglossaryentry{XAML}{name=XAML, description={Extensible Application Markup Language}}
- 
-\printglossary[title=Ordliste, toctitle=Beskrivelse av ord og forkortelser]
-\contentspage
-\figurelistpage
-\listoflistings
+  
+    \newglossaryentry{USB}{name=USB, description={Universal Serial Bus}}
+    
+\newglossaryentry{API}{name=API, description={Application Programming Interface}}
 
-\normalspacing \setcounter{page}{1} \pagenumbering{arabic}
-\pagestyle{cornell} \addtolength{\parskip}{0.5\baselineskip}
+\newglossaryentry{VB}{name=VB, description={Visual Basic}}
+
+\newglossaryentry{Csharp}{name=C\#, description={C Sharp}}
+ 
+
+%\addtolength{\parskip}{0.5\baselineskip}
+
+%\maketitle
+\frontmatter
+
+%\section*{Forord}
+
+\titlePage
+
+%\begin{abstract}
+%\input{Chapters/01abstrakt}
+%\end{abstract}
+
+\chapter*{Sammendrag}
+\addcontentsline{toc}{chapter}{Sammendrag}
+\input{Chapters/01abstrakt}
+
+
+\chapter*{Takk}
+\addcontentsline{toc}{chapter}{Takk}
+\input{Chapters/02Forord}
+
+
+
+ 
+%\contentspage
+\tableofcontents
+\printglossary[title=Ordliste, toctitle=Beskrivelse av ord og forkortelser]
+\addcontentsline{toc}{chapter}{Glossary}
+
+\listoflistings
+\addcontentsline{toc}{chapter}{Kodeliste}
+
+%\figurelistpage
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+
+
+
+\normalspacing 
+%\setcounter{page}{1} 
+\pagenumbering{arabic}
+%\pagestyle{cornell} 
 
 \mainmatter
 

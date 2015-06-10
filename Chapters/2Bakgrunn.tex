@@ -1,16 +1,26 @@
-Finnes ikke så mye bakgrunns materiale, har tatt med det som finnes. Vil nok ta mest tid å utvikle programvaren
- 
+
 \chapter{Bakgrunn}
 I dette kapittelet vil vi gå dypere inn i hva vi ønsker å finne ut og hvordan vi skal prøve å finne dette ut. 
 
-
 \section{Tidligere Forskning}
+
+
+\subsection{Animasjoner}
+
+
+Animasjoner i programvare brukes som et virkemiddel for å tiltrekke seg oppmerksomhet, underholde eller demonstrere noe. Det kan enten være en kort animasjon der en knapp tiltrer til en side når man svever over den med musen eller det kan være av den lengre sorten som en flash-video.  
+
+Animasjon er i hovedsak alt som beveger seg i applikasjonen. Selv om dynamikken som animasjoner kan fungere som et positivt virkemiddel viser undersøkelser gjort av Nielsen og Loranger \cite{NielsenBok}  at for mye blinkende og bevegende elementer kan slite ut brukeren og gjør det vanskeligere å fokusere på oppgaven. Med animasjonene som er implementer ønsker vi å undersøke dette. Hvilke animasjoner fungerer som et hjelpemiddel og med det gir verdi til applikasjonen og hvilke som er distraherende for brukeren og gir en uønsket effekt. 
+ 
+
 
 \subsection{Organisering}
 
-I 1926 kartla Smith\cite{Smith} barns vokabularutvikling fra alderen 1 til 5 år . Resultatene (se tabell \ref{fig:BarnVak}) viste at allerede i en alder av 3 er det vanlig å ha en gjennomsnittlig forståelse for cirka 900 ord. Forskningen er 88 år gammel, men viser omfanget av utfordringen barn har i møte med symbolbasert kommunikasjon. Mens et barn med taleevne kun trenger å finne ordet i hukommelsen, må barn som bruker symboler først finne det og deretter lokalisere det representative symbolet. 
+I 1926 kartla Smith\cite{Smith} barns vokabularutvikling fra alderen 1 til 5 år. Resultatene (se tabell \ref{fig:BarnVak}) viste at allerede i en alder av 3 er det vanlig å ha en gjennomsnittlig forståelse av cirka 900 ord. Forskningen er 88 år gammel, men viser omfanget av utfordringen barn har i møte med symbolbasert kommunikasjon. Mens et barn med taleevne kun trenger å finne ordet i hukommelsen, må barn som bruker symboler først finne det og deretter lokalisere det representative symbolet. 
 
-I applikasjonen som skal utvikles vil symbolene bli presentert i en tabell. Antall symboler som får plass i tabellen begrenses av skjermens fysiske størrelse og at de må være store nok til at brukeren har mulighet til å se  og samhandle med dem. En slik tabell med symboler vil herfra bli referert til som en side. For hver setning brukeren vil uttrykke må han navigere seg igjennom flere av disse sidene for å finne symbolene som representerer ordene i setningen. Det er derfor essensielt at organiseringen legger til rette for akkurat dette, og ikke vanskeliggjør barnets evne til å lokalisere, velge og bruke symbolene.
+I applikasjonen som skal utvikles vil symbolene bli presentert i en tabell. Antall symboler som får plass i tabellen begrenses av skjermens fysiske størrelse og at de må være store nok til at brukeren har mulighet til å se  og samhandle med dem. En slik tabell med symboler vil herfra bli referert til som en side. 
+
+For hver setning brukeren vil uttrykke må han navigere seg igjennom flere av disse sidene for å finne symbolene som representerer ordene i setningen. Det er derfor essensielt at organiseringen legger til rette for akkurat dette, og ikke vanskeliggjør barnets evne til å lokalisere, velge og bruke symbolene.
 
 \begin{table}[h]
 \begin{tabular}{llllllllll}
@@ -24,13 +34,17 @@ Antall ord          & 3 & 22  & 118 & 272 & 446 & 896 & 1222 & 1540 & 2072 \\
 \end{table}
 
 
-Drager og Light \cite{aac} viser til at det inntil nylig var gjort lite forskning på layouts og organisering for barn eller om faktorene som spiller inn når det gjelder lokalisering og bruk av målobjektene. Målobjektet er symbolet som brukeren ønsker å uttrykke. Wilkinson og Jageroo \cite{Wilkinson2006} har undersøkt hvilke påvirkning farge har som en faktor når det kommer til organisering og hvordan elementer skal fordeles. De kom frem til at fargehint spiller en viktig rolle innen visuell prosessering  og hukommelse. Ved å legge til en farge ved elementene i tabellen over symboler, påvirket det nøyaktigheten og effektiviteten til barn i 4-5 års alderene i å finne målobjekt. Eksempelvis kan man gi symboler som representerer verb en grønn farge, adjektiv en blå, pronomen gul o.s.v. Fenomenet kalles Fitzergald Key og gjør at barn mer presist og raskere lokalisere målobjektet. Scally \cite{Scally} argumenterer for at farge ikke nødvendigvis er den eneste variabelen som må vurderes. Andre skjerm variabler som kan påvirke læring og bruk er: bakgrunn, kanter/grenser, form, tekstur, størrelse, posisjon, bevegelse og animasjon. Videre undersøkelser må til for å avgrense effektene av disse funksjonene for å kunne optimere designet til ask-systemer.
+Drager og Light \cite{aac} viser til at det inntil nylig var gjort lite forskning på layouts og organisering for barn eller om hvilke faktorer som spiller inn når det gjelder lokalisering og bruk av målobjektene. Målobjektet er symbolet som brukeren ønsker å uttrykke. Wilkinson og Jageroo \cite{Wilkinson2006} har undersøkt hvilke påvirkning farge har som en faktor når det kommer til organisering og hvordan elementer skal fordeles. De kom frem til at farge spiller en viktig rolle innen visuell prosessering  og hukommelse. Ved å legge til en farge ved elementene i tabellen over symboler, påvirket det nøyaktigheten og effektiviteten til barn i 4-5 års alderen i å finne målobjekt. Eksempelvis kan man gi symboler som representerer verb en grønn farge, adjektiv en blå, pronomen gul o.s.v. Fenomenet kalles Fitzergald Key og gjør at barn mer presist og raskere lokalisere målobjektet.
+
+Scally \cite{Scally} argumenterer for at farge ikke nødvendigvis er den eneste variabelen som må vurderes. Andre skjermvariabler som kan påvirke læring og bruk er: bakgrunn, kanter/grenser, form, tekstur, størrelse, posisjon, bevegelse og animasjon. Videre undersøkelser må til for å avgrense effektene av disse funksjonene for å kunne optimere designet til ASK-systemer.
 
 
 \subsection{Navigasjon}
 \label{subsec:navigasjon}
 
-Hvis en tar med alle typene frukt så vil det ikke være plass til alle symbolene på en side, dette gjør at de må deles opp over flere sider.Konsekvensen er at brukeren må ha mulighet til å navigere mellom disse sidene for å finne ønsket symbol. Siden antallet symboler det er plass til på hver side begrenses av skjermstørrelsen og brukerens syn, er spørsmålet hvor mange symboler bør plasseres på hver side med tanke på effektivitet. Drager og light med kollegaer undersøkte nettopp dette. Resultatene indikerte at barn i alderen 2-5 hadde større vanskeligheter for å lokalisere korrekt side fra en meny med 4 symboler enn en så lokalisere målobjektet når på korrekt side ut av et valg på 12 til 30 symboler, til tross for at sannsynligheten for å finne korrekt side er 25 prosent er mye større enn å finne korrekt symbol 0.03 - 0.08 når en først er på rett side.
+Hvis en tar med alle typene frukt som finnes vil det ikke være plass til alle symbolene på en side. Dette gjør at de må deles opp over flere sider. Konsekvensen er at brukeren må ha mulighet til å navigere mellom disse sidene for å finne ønsket symbol. Siden antallet symboler det er plass til på hver side begrenses av skjermstørrelsen og brukerens syn, er spørsmålet hvor mange symboler bør plasseres på hver side med tanke på effektivitet. 
+Drager og Light \cite{aac} undersøkte nettopp dette. De kom frem til at det er vanskeligere for et barn å lokalisere korrekt side fra en meny med 4 valg, enn å finne korrekt symbol fra korrekt side med 12 - 30 valg.
+
 
 For barn kan det å navigere være ekstra vanskelig. Dette kommer av flere grunner: (a) de må ha en konseptuell modell av de gjemte sidene i systemet i minnet. Med andre ord forstå hvordan de mest effektivt kan komme seg fra forsiden til ønsket symbol. (b) De må forstå forholdet mellom representasjon brukt på menysiden og de gjemte sidene i vokabularet. Er det symbolet med bilde av et kjøkken eller av en butikk som leder til symbolet eple? I denne rapporten vil disse utfordringene bli undersøkt.
 

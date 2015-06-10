@@ -1,0 +1,62 @@
+%--------------------------------------
+% Master's Thesis Title Page 
+% LaTeX Template
+% Version 1.0 (23/05/14)
+%---------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Required for box manipulation
+\usepackage{helvet}
+\usepackage{subfig}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\newcommand*{\titlePage}{\begingroup % Create the command for including the title page in the document
+\fontfamily{phv}\selectfont
+\centering % Center all text
+
+\vspace{200pt}
+{\Huge Lorem ipsum dolor sit amet} \\ % Title
+\vspace{5pt}
+
+{\Large \textsl{Consectetur adipisicing elit, sed do tempor incididunt ut labore et dolore magna aliqua}} % Subtitle or further description
+\vspace{50pt}
+
+{\Large{Marcus Tullius Cicero}}\\ % Author name
+
+\vfill % Whitespace between the author name and the publisher logo
+
+{\Large Masteroppgave i programutvikling ved \\
+Institutt for data- og realfag, Høgskolen i Bergen \\
+Institutt for informatikk, Universitetet i Bergen\\ }
+\vspace{10pt}
+{\large Juni 2014} % Month and year published
+
+\begin{figure}[h!]
+	\captionsetup[subfigure]{labelformat=empty}
+	\subfloat[][]{\includegraphics[width=50pt]{HIB_sort_hovedlogo.eps}}
+	\hfill
+	\subfloat[][]{\includegraphics[width=50pt]{uib-logo.eps}}
+\end{figure}
+
+
+\endgroup}
+
+%----------------------------------------------------------------------------------------
+%	BLANK DOCUMENT
+%----------------------------------------------------------------------------------------
+
+\begin{document} 
+
+\pagestyle{empty} % Removes page numbers
+
+\titlePage % This command includes the title page
+
+\end{document}
